@@ -5,40 +5,68 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { supabase } from '@/lib/supabase';
-import { MessageCircle, BookOpen, Bot, Sparkles, ArrowRight, ShoppingBag, ExternalLink, Activity } from 'lucide-react';
+import { MessageCircle, BookOpen, Bot, Sparkles, ArrowRight, ShoppingBag, ExternalLink, Activity, TrendingUp, Smile } from 'lucide-react';
 
 interface MoodLog {
     student_email: string;
     mood: string;
-    note?: string;
     created_at: string;
 }
 
 export default function DashboardPage() {
   const [user, setUser] = useState('Sobat SEHATI');
   const [moodLoading, setMoodLoading] = useState(false);
-  const [moodHistory, setMoodHistory] = useState<MoodLog[]>([]); // For Counselor View
+  const [moodHistory, setMoodHistory] = useState<MoodLog[]>([]); 
   const [showCounselorView, setShowCounselorView] = useState(false);
+  
+  // Analytics State
+  const [lastMood, setLastMood] = useState<string | null>(null);
+  const [weeklyCount, setWeeklyCount] = useState(0);
+  const [dominantMood, setDominantMood] = useState('Belum cukup data');
 
   useEffect(() => {
     const storedUser = localStorage.getItem('sehati_user');
     if (storedUser) {
         setUser(storedUser);
-        // If email contains 'admin' or 'counselor', show counselor view (Simple logic for MVP)
+        // Check role
         if (storedUser.includes('admin') || storedUser.includes('counselor') || storedUser.includes('guru')) {
             setShowCounselorView(true);
-            fetchMoodLogs();
+            fetchMoodLogsAdmin();
+        } else {
+            fetchUserAnalytics(storedUser);
         }
     }
   }, []);
 
-  const fetchMoodLogs = async () => {
+  // FETCH ANALYTICS FOR STUDENT
+  const fetchUserAnalytics = async (email: string) => {
+      const { data, error } = await supabase
+        .from('mood_logs')
+        .select('mood, created_at')
+        .eq('student_email', email)
+        .order('created_at', { ascending: false });
+
+      if (data && data.length > 0) {
+          setLastMood(data[0].mood);
+          setWeeklyCount(data.length); // Simplified: Total count for now
+          
+          // Calculate Dominant Mood
+          const counts: {[key: string]: number} = {};
+          data.forEach(log => {
+              counts[log.mood] = (counts[log.mood] || 0) + 1;
+          });
+          const dominant = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+          setDominantMood(dominant);
+      }
+  };
+
+  // FETCH LOGS FOR ADMIN
+  const fetchMoodLogsAdmin = async () => {
       const { data } = await supabase
         .from('mood_logs')
         .select('*')
         .order('created_at', { ascending: false })
         .limit(10);
-      
       if (data) setMoodHistory(data);
   };
 
@@ -51,19 +79,22 @@ export default function DashboardPage() {
                 { 
                     student_email: user, 
                     mood: mood, 
-                    note: 'Daily check-in' // Optional: Add input for note later
+                    note: 'Dashboard entry'
                 }
             ]);
 
         if (error) throw error;
-        alert(`Terima kasih sudah check-in! Mood kamu: ${mood}`);
         
-        // Refresh counselor view if active
-        if (showCounselorView) fetchMoodLogs();
+        alert(`Mood "${mood}" berhasil disimpan!`);
+        // Refresh analytics locally
+        setLastMood(mood);
+        setWeeklyCount(prev => prev + 1);
+        
+        if (showCounselorView) fetchMoodLogsAdmin();
 
     } catch (error) {
         console.error("Error logging mood:", error);
-        alert("Gagal menyimpan mood. Coba lagi ya.");
+        alert("Gagal menyimpan mood. Pastikan koneksi internet aman.");
     } finally {
         setMoodLoading(false);
     }
@@ -75,24 +106,36 @@ export default function DashboardPage() {
       
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8">
         {/* Greeting & Mood Tracker Hero */}
-        <div className="bg-gradient-to-r from-primary to-blue-600 rounded-3xl p-8 md:p-12 text-white shadow-lg mb-10 relative overflow-hidden">
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-[2.5rem] p-8 md:p-12 text-white shadow-xl mb-10 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
           <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
             <div>
-                <h1 className="text-3xl md:text-4xl font-bold mb-2">Selamat Pagi, {user}! 👋</h1>
+                <h1 className="text-3xl md:text-4xl font-bold mb-2">Halo, {user.split('@')[0]}! 👋</h1>
                 <p className="text-blue-100 text-lg max-w-xl">
-                Bagaimana perasaanmu hari ini?
+                  Bagaimana kabarmu hari ini? Validasi perasaanmu sekarang.
                 </p>
+                
+                {/* Mini Analytics Badge */}
+                <div className="flex gap-4 mt-6">
+                    <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-xl flex items-center gap-2 text-sm">
+                        <Activity className="w-4 h-4 text-yellow-300" />
+                        <span>Terakhir: <strong>{lastMood || '-'}</strong></span>
+                    </div>
+                    <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-xl flex items-center gap-2 text-sm">
+                        <TrendingUp className="w-4 h-4 text-green-300" />
+                        <span>Dominan: <strong>{dominantMood}</strong></span>
+                    </div>
+                </div>
             </div>
             
             {/* Mood Picker */}
-            <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20">
-                <p className="text-sm font-medium mb-3 text-center text-blue-50">Klik emojinya:</p>
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20 shadow-lg">
+                <p className="text-sm font-semibold mb-4 text-center text-blue-50 uppercase tracking-wider">Pilih Mood Kamu</p>
                 <div className="flex gap-4">
-                    <button onClick={() => handleMoodClick('senang')} disabled={moodLoading} className="text-4xl hover:scale-125 transition-transform" title="Senang">😄</button>
-                    <button onClick={() => handleMoodClick('biasa')} disabled={moodLoading} className="text-4xl hover:scale-125 transition-transform" title="Biasa Aja">😐</button>
-                    <button onClick={() => handleMoodClick('sedih')} disabled={moodLoading} className="text-4xl hover:scale-125 transition-transform" title="Sedih">😢</button>
-                    <button onClick={() => handleMoodClick('marah')} disabled={moodLoading} className="text-4xl hover:scale-125 transition-transform" title="Marah">😡</button>
+                    <button onClick={() => handleMoodClick('senang')} disabled={moodLoading} className="text-5xl hover:scale-125 transition-transform drop-shadow-md grayscale hover:grayscale-0" title="Senang">😄</button>
+                    <button onClick={() => handleMoodClick('biasa')} disabled={moodLoading} className="text-5xl hover:scale-125 transition-transform drop-shadow-md grayscale hover:grayscale-0" title="Biasa">😐</button>
+                    <button onClick={() => handleMoodClick('sedih')} disabled={moodLoading} className="text-5xl hover:scale-125 transition-transform drop-shadow-md grayscale hover:grayscale-0" title="Sedih">😢</button>
+                    <button onClick={() => handleMoodClick('marah')} disabled={moodLoading} className="text-5xl hover:scale-125 transition-transform drop-shadow-md grayscale hover:grayscale-0" title="Marah">😡</button>
                 </div>
             </div>
           </div>
@@ -103,12 +146,12 @@ export default function DashboardPage() {
            {/* Main Content (Left) */}
            <div className="lg:col-span-3 space-y-8">
               
-              {/* COUNSELOR DASHBOARD SECTION (Conditional) */}
+              {/* COUNSELOR DASHBOARD SECTION (Admin Only) */}
               {showCounselorView && (
-                  <div className="bg-white rounded-3xl p-6 border border-indigo-100 shadow-sm">
-                      <div className="flex items-center gap-2 mb-4 text-indigo-700">
+                  <div className="bg-white rounded-3xl p-6 border border-rose-100 shadow-sm ring-4 ring-rose-50">
+                      <div className="flex items-center gap-2 mb-4 text-rose-700">
                           <Activity className="w-6 h-6" />
-                          <h2 className="text-xl font-bold">Counselor Dashboard (Live Updates)</h2>
+                          <h2 className="text-xl font-bold">Counselor Dashboard (Data Siswa)</h2>
                       </div>
                       <div className="overflow-x-auto">
                           <table className="w-full text-sm text-left">
@@ -123,13 +166,10 @@ export default function DashboardPage() {
                                   {moodHistory.map((log, idx) => (
                                       <tr key={idx} className="border-b border-slate-100 hover:bg-slate-50">
                                           <td className="px-4 py-3 font-medium">{log.student_email}</td>
-                                          <td className="px-4 py-3">{log.mood === 'senang' ? '😄' : log.mood === 'sedih' ? '😢' : log.mood === 'marah' ? '😡' : '😐'} {log.mood}</td>
+                                          <td className="px-4 py-3">{log.mood}</td>
                                           <td className="px-4 py-3 text-slate-400">{new Date(log.created_at).toLocaleString()}</td>
                                       </tr>
                                   ))}
-                                  {moodHistory.length === 0 && (
-                                      <tr><td colSpan={3} className="px-4 py-4 text-center text-slate-400">Belum ada data mood masuk.</td></tr>
-                                  )}
                               </tbody>
                           </table>
                       </div>
@@ -137,7 +177,7 @@ export default function DashboardPage() {
               )}
 
               <div className="grid md:grid-cols-2 gap-6">
-                {/* Card 1: AI Chat (Primary) */}
+                {/* Card 1: AI Chat */}
                 <Link href="/chat" className="md:col-span-2 bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
                     <div className="absolute top-0 right-0 bg-gradient-to-bl from-blue-50 to-transparent w-32 h-32 rounded-bl-full"></div>
                     <div className="relative z-10">
@@ -154,7 +194,7 @@ export default function DashboardPage() {
                     </div>
                 </Link>
 
-                {/* Card 2: WA Chat (Secondary) */}
+                {/* Card 2: WA Chat */}
                 <a 
                     href="https://wa.me/6281234567890?text=Halo%20Kak%20GenRe,%20aku%20mau%20cerita..." 
                     target="_blank"
@@ -176,7 +216,7 @@ export default function DashboardPage() {
                     </div>
                 </a>
 
-                {/* Card 3: Materi (Tertiary) */}
+                {/* Card 3: Materi */}
                 <Link href="/materi" className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-between h-full">
                     <div>
                         <div className="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center text-yellow-600 mb-6 group-hover:scale-110 transition-transform">
@@ -204,45 +244,16 @@ export default function DashboardPage() {
                  </div>
                  
                  <div className="space-y-4">
-                    {/* Affiliate Item 1 */}
                     <div className="group block p-3 rounded-xl hover:bg-slate-50 transition-colors border border-slate-50 hover:border-slate-200 cursor-pointer">
-                       <div className="h-24 w-full bg-slate-100 rounded-lg mb-3 overflow-hidden relative">
-                          <div className="absolute inset-0 flex items-center justify-center text-xs text-slate-400 bg-pink-50">
-                             Image: Book
-                          </div>
+                       <div className="h-24 w-full bg-slate-100 rounded-lg mb-3 overflow-hidden relative flex items-center justify-center">
+                          <span className="text-4xl">📔</span>
                        </div>
-                       <h4 className="font-bold text-sm text-slate-800 mb-1 group-hover:text-pink-500 transition-colors">Gratitude Journal 2025</h4>
-                       <p className="text-xs text-slate-500 mb-3">Tulis hal baik setiap hari.</p>
+                       <h4 className="font-bold text-sm text-slate-800 mb-1 group-hover:text-pink-500 transition-colors">Gratitude Journal</h4>
                        <div className="flex items-center justify-between text-xs font-semibold text-pink-600">
                           <span>Rp 45.000</span>
-                          <span className="flex items-center gap-1 bg-pink-50 px-2 py-1 rounded-md">
-                             Beli <ExternalLink className="h-3 w-3" />
-                          </span>
+                          <span className="flex items-center gap-1 bg-pink-50 px-2 py-1 rounded-md">Beli <ExternalLink className="h-3 w-3" /></span>
                        </div>
                     </div>
-
-                    {/* Affiliate Item 2 */}
-                    <div className="group block p-3 rounded-xl hover:bg-slate-50 transition-colors border border-slate-50 hover:border-slate-200 cursor-pointer">
-                       <div className="h-24 w-full bg-slate-100 rounded-lg mb-3 overflow-hidden relative">
-                          <div className="absolute inset-0 flex items-center justify-center text-xs text-slate-400 bg-blue-50">
-                             Image: Fidget
-                          </div>
-                       </div>
-                       <h4 className="font-bold text-sm text-slate-800 mb-1 group-hover:text-blue-500 transition-colors">Anti-Stress Cube</h4>
-                       <p className="text-xs text-slate-500 mb-3">Mainan pereda cemas.</p>
-                       <div className="flex items-center justify-between text-xs font-semibold text-blue-600">
-                          <span>Rp 25.000</span>
-                          <span className="flex items-center gap-1 bg-blue-50 px-2 py-1 rounded-md">
-                             Beli <ExternalLink className="h-3 w-3" />
-                          </span>
-                       </div>
-                    </div>
-                 </div>
-                 
-                 <div className="mt-6 pt-4 border-t border-slate-100 text-center">
-                    <p className="text-[10px] text-slate-400">
-                      *Setiap pembelian mendukung operasional SEHATI+.
-                    </p>
                  </div>
               </div>
 
