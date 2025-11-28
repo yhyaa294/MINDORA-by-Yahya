@@ -3,14 +3,15 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Heart, Users, Zap, CheckCircle } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Heart, Users, Zap, CheckCircle, MessageCircle, ChevronDown, Phone } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white flex flex-col">
       <Navbar />
       
-      {/* Hero Section */}
+      {/* Hero Section - PROTECTED - DO NOT MODIFY */}
       <section className="relative pt-20 pb-32 overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-100/50 via-transparent to-transparent"></div>
         
@@ -59,121 +60,129 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Value Props Grid */}
-      <section id="features" className="py-24 bg-slate-50">
+      {/* 1. NEW: Emergency Action Bar (The Bridge) */}
+      <section className="relative z-20 -mt-10 px-4">
+        <div className="max-w-3xl mx-auto">
+            <div className="bg-white/80 backdrop-blur-md border border-pink-100 rounded-2xl p-4 md:p-6 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 transform hover:scale-[1.02] transition-transform duration-300">
+                <div className="flex items-center gap-4 text-center md:text-left">
+                    <div className="bg-rose-100 p-3 rounded-full text-rose-500 animate-pulse">
+                        <Heart className="w-6 h-6" />
+                    </div>
+                    <div>
+                        <h3 className="font-bold text-slate-800 text-lg">Lagi butuh teman cerita sekarang juga?</h3>
+                        <p className="text-sm text-slate-500">Jangan dipendam sendiri ya, yuk ngobrol!</p>
+                    </div>
+                </div>
+                <div className="flex gap-3 w-full md:w-auto">
+                    <Link href="/login" className="flex-1 md:flex-none px-5 py-2.5 bg-white text-rose-500 border border-rose-200 rounded-xl font-bold text-sm hover:bg-rose-50 transition-colors flex items-center justify-center gap-2">
+                        <Zap className="w-4 h-4" />
+                        Curhat ke AI
+                    </Link>
+                    <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" className="flex-1 md:flex-none px-5 py-2.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl font-bold text-sm hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        <MessageCircle className="w-4 h-4" />
+                        Chat Duta GenRe
+                    </a>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      {/* 2. REVAMP: Features Section (Bestie Style) */}
+      <section id="features" className="py-24 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="text-center mb-16">
+             <span className="text-rose-500 font-bold tracking-wider uppercase text-xs bg-rose-50 px-3 py-1 rounded-full border border-rose-100">Kenapa Harus SEHATI+?</span>
+             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-4">Support System Paling Pengertian</h2>
+           </div>
+
            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
-                <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
+              {/* Card 1: AI */}
+              <div className="bg-white p-8 rounded-3xl border border-slate-50 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                <div className="w-14 h-14 bg-gradient-to-br from-pink-100 to-rose-50 rounded-2xl flex items-center justify-center text-rose-500 mb-6 group-hover:scale-110 transition-transform">
                    <Zap className="h-7 w-7" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Teman Cerita 24 Jam</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Bestie Virtual 24/7</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  AI kami dilatih untuk menjadi pendengar pertama yang baik saat kamu galau tengah malam. Tanpa menghakimi, selalu validasi perasaanmu.
+                  Gapapa kalau belum siap cerita ke orang. AI kita siap dengerin keluh kesahmu kapan aja, tanpa nge-judge. Selalu ada buat kamu.
                 </p>
               </div>
 
-              <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
-                <div className="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 mb-6 group-hover:scale-110 transition-transform">
-                   <Users className="h-7 w-7" />
+              {/* Card 2: Human */}
+              <div className="bg-white p-8 rounded-3xl border border-slate-50 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -mr-10 -mt-10 opacity-50"></div>
+                <div className="relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-indigo-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
+                       <Users className="h-7 w-7" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">Kakak GenRe</h3>
+                    <p className="text-slate-600 leading-relaxed">
+                      Butuh saran yang lebih &quot;nyata&quot;? Chat sama Kakak Duta GenRe yang asik dan ngerti perasaanmu. Berasa curhat ke temen sendiri.
+                    </p>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Curhat ke &lsquo;Kakak-an&rsquo;</h3>
-                <p className="text-slate-600 leading-relaxed">
-                  Kadang kamu butuh saran dari manusia nyata yang &ldquo;satu frekuensi&rdquo;. Ngobrol santai dengan Duta GenRe via WhatsApp jika butuh bantuan lebih.
-                </p>
               </div>
 
-              <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
-                <div className="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center text-red-600 mb-6 group-hover:scale-110 transition-transform">
+              {/* Card 3: Privacy */}
+              <div className="bg-white p-8 rounded-3xl border border-slate-50 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                <div className="w-14 h-14 bg-gradient-to-br from-slate-100 to-gray-50 rounded-2xl flex items-center justify-center text-slate-600 mb-6 group-hover:scale-110 transition-transform">
                    <ShieldCheck className="h-7 w-7" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Ruang Aman Tanpa &lsquo;Spill&rsquo;</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Ruang Aman</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Ceritamu berhenti di sini. Kami menggunakan sistem anonim (tanpa nama asli) di dashboard konselor agar kamu nyaman jadi diri sendiri.
+                  Rahasia kita berdua aja. Sistem didesain privat biar kamu nyaman jadi diri sendiri tanpa takut data bocor atau di-spill.
                 </p>
               </div>
            </div>
         </div>
       </section>
 
-      {/* Services / Business Section */}
-      <section className="py-20 bg-white border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="flex flex-col md:flex-row items-center gap-12">
-              <div className="md:w-1/2">
-                 <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-1.5 rounded-full text-sm font-bold mb-6 border border-green-100">
-                    <Zap className="h-4 w-4" />
-                    Program Sekolah Sehati
-                 </div>
-                 <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-                   Jadikan Sekolahmu &ldquo;Zona Nyaman&rdquo; Mental.
-                 </h2>
-                 <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-                   Paket kolaborasi lengkap: aplikasi monitoring siswa + workshop seru Anti-Bullying dari tim Duta GenRe. Bukan sekadar ceramah membosankan.
-                 </p>
-                 
-                 <div className="space-y-4 mb-8">
-                    <div className="flex items-center gap-3">
-                       <div className="bg-green-100 p-2 rounded-full text-green-600"><ShieldCheck className="h-5 w-5" /></div>
-                       <span className="text-slate-700 font-medium">Sosialisasi GenRe & Kesehatan Remaja</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                       <div className="bg-green-100 p-2 rounded-full text-green-600"><Users className="h-5 w-5" /></div>
-                       <span className="text-slate-700 font-medium">Demo Aplikasi SEHATI+ untuk Siswa</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                       <div className="bg-green-100 p-2 rounded-full text-green-600"><Heart className="h-5 w-5" /></div>
-                       <span className="text-slate-700 font-medium">Sesi Konseling Kelompok Terbimbing</span>
-                    </div>
-                 </div>
+      {/* 3. NEW: FAQ Section (Accordion) */}
+      <section className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4">
+            <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-slate-900">Sering Ditanyakan (FAQ)</h2>
+                <p className="text-slate-500 mt-2">Biar kamu makin yakin buat mulai cerita.</p>
+            </div>
 
-                 <a 
-                   href="https://wa.me/6281234567890?text=Halo%20Tim%20SEHATI+,%20saya%20tertarik%20mengundang%20kalian%20untuk%20mengisi%20materi%20di%20sekolah..." 
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="inline-flex items-center bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                 >
-                   Undang Kami ke Sekolahmu
-                   <ArrowRight className="ml-2 h-5 w-5" />
-                 </a>
-              </div>
-              
-              <div className="md:w-1/2 relative">
-                 <div className="absolute inset-0 bg-gradient-to-tr from-green-100 to-blue-50 rounded-3xl transform rotate-3 scale-105 -z-10"></div>
-                 <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-xl relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-bl-full -mr-10 -mt-10"></div>
-                    <div className="relative z-10 py-12 space-y-6">
-                      <div className="flex items-start gap-4">
-                        <div className="bg-green-100 p-3 rounded-2xl text-green-600">
-                          <Users className="h-8 w-8" />
-                        </div>
-                        <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-green-600">Untuk Kepala Sekolah</p>
-                          <h3 className="text-2xl font-bold text-slate-900">Mengapa Berkolaborasi?</h3>
-                        </div>
-                      </div>
-                      <ul className="space-y-4 text-slate-600 text-sm font-medium">
-                        <li className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
-                          <span>Deteksi dini masalah bullying & stres siswa.</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
-                          <span>Laporan data kesehatan mental sekolah (anonim).</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
-                          <span>Mendukung program Sekolah Ramah Anak & GenRe.</span>
-                        </li>
-                      </ul>
-                    </div>
-                 </div>
-              </div>
-           </div>
+            <div className="space-y-4">
+                <FaqItem 
+                    question="Curhat di sini bayar gak?" 
+                    answer="Tenang bestie, 100% GRATIS buat semua siswa SMANERO. Kamu tinggal login dan pakai sepuasnya."
+                />
+                <FaqItem 
+                    question="Siapa yang baca chat aku?" 
+                    answer="Kalau sama AI, cuma mesin yang baca. Kalau sama Duta GenRe, cuma kakak konselor yang tau. Guru mapel GAK AKAN tau curhatanmu."
+                />
+                <FaqItem 
+                    question="Aku malu ketahuan..." 
+                    answer="Santai, kamu bisa pakai nama samaran kok di dashboard konseling. Identitas aslimu aman terkunci di database admin."
+                />
+            </div>
         </div>
       </section>
 
       <Footer />
     </main>
   );
+}
+
+// Simple FAQ Component
+function FaqItem({ question, answer }: { question: string, answer: string }) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="border border-slate-100 rounded-2xl overflow-hidden">
+            <button 
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full flex items-center justify-between p-5 bg-slate-50 hover:bg-slate-100 transition-colors text-left"
+            >
+                <span className="font-bold text-slate-800">{question}</span>
+                <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {isOpen && (
+                <div className="p-5 bg-white text-slate-600 leading-relaxed border-t border-slate-100 animate-fade-in-down">
+                    {answer}
+                </div>
+            )}
+        </div>
+    );
 }
