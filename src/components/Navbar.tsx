@@ -2,9 +2,18 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Heart, ChevronDown } from 'lucide-react';
+import MysteryLogo from './MysteryLogo';
 
 export default function Navbar() {
+  const pathname = usePathname();
+
+  // Hide Navbar on Dashboard and Chat pages (they use Sidebar/BottomNav)
+  if (pathname.startsWith('/dashboard') || pathname.startsWith('/chat')) {
+      return null;
+  }
+
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,12 +41,8 @@ export default function Navbar() {
             </div>
 
             <div className="flex items-center gap-2">
-              <div className="bg-white p-1.5 rounded-full border border-red-100">
-                <Heart className="h-6 w-6 text-accent fill-accent" />
-              </div>
-              <span className="font-bold text-xl tracking-tight text-primary hidden sm:block">
-                SEHATI<span className="text-accent">+</span>
-              </span>
+              {/* REPLACED: Mystery Logo for SEHATI+ */}
+              <MysteryLogo className="w-24 h-10 sm:w-32 sm:h-11" text="SEHATI+" subtext="PREVIEW" />
             </div>
           </div>
 

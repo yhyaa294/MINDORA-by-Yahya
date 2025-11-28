@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heart, Globe, Instagram, MapPin } from 'lucide-react';
 import Link from 'next/link';
+import MysteryLogo from './MysteryLogo';
 
 export default function Footer() {
   return (
@@ -11,12 +12,8 @@ export default function Footer() {
           {/* Left: Brand & Tagline */}
           <div className="col-span-1">
             <div className="flex items-center gap-2 mb-6">
-              <div className="bg-rose-50 p-2.5 rounded-xl border border-rose-100">
-                <Heart className="h-6 w-6 text-rose-500 fill-rose-500" />
-              </div>
-              <span className="font-bold text-2xl tracking-tight text-slate-900">
-                SEHATI<span className="text-rose-500">+</span>
-              </span>
+              {/* REPLACED: Mystery Logo for Footer Brand */}
+              <MysteryLogo className="w-36 h-12" text="SEHATI+" subtext="OFFICIAL" />
             </div>
             <p className="text-slate-600 leading-relaxed mb-8 max-w-xs">
               Ruang aman untuk setiap cerita. Karena kesehatan mentalmu adalah prioritas utama kami.

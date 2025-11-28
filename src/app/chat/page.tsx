@@ -1,173 +1,88 @@
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
-import Navbar from '@/components/Navbar';
-import { Send, Bot, User, Loader2, AlertTriangle, Phone } from 'lucide-react';
+import React from 'react';
+import Link from 'next/link';
+import { Bot, Users, ArrowRight, MessageCircle } from 'lucide-react';
 
-type Message = {
-  id: string;
-  role: 'user' | 'ai';
-  content: string;
-  isCrisis?: boolean;
-};
-
-export default function ChatPage() {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      role: 'ai',
-      content: 'Halo! Aku Sobat SEHATI. Aku siap mendengarkan ceritamu tanpa menghakimi. Apa yang sedang kamu rasakan?'
-    }
-  ]);
-  const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [showPanic, setShowPanic] = useState(false); // State for Panic Button Highlight
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const handleSend = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      role: 'user',
-      content: input
-    };
-
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
-    setIsLoading(true);
-    setShowPanic(false); // Reset panic state on new message
-
-    try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMessage.content }),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        const aiMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          role: 'ai',
-          content: data.response,
-          isCrisis: data.isCrisis
-        };
-        setMessages(prev => [...prev, aiMessage]);
-        
-        if (data.isCrisis) {
-            setShowPanic(true);
-        }
-      } else {
-        throw new Error(data.error || 'Failed to fetch');
-      }
-    } catch (error) {
-      console.error(error);
-      // Fallback error message
-      setMessages(prev => [...prev, {
-        id: (Date.now() + 1).toString(),
-        role: 'ai',
-        content: "Maaf, aku sedang pusing (koneksi error). Bisa ulangi lagi nanti?"
-      }]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
+export default function ChatSelectionPage() {
   return (
-    <div className="flex flex-col h-screen bg-slate-50">
-      <Navbar />
-
-      {/* Chat Container */}
-      <main className="flex-1 max-w-2xl w-full mx-auto p-4 flex flex-col relative">
+    <div className="min-h-screen bg-slate-50 p-4 md:p-8">
+      <div className="max-w-4xl mx-auto space-y-8 mt-8 md:mt-0">
         
-        {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto space-y-4 pb-4 rounded-2xl p-2">
-          {messages.map((msg) => (
-            <div
-              key={msg.id}
-              className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-            >
-              <div
-                className={`max-w-[85%] rounded-2xl p-4 shadow-sm text-sm md:text-base ${
-                  msg.role === 'user'
-                    ? 'bg-blue-600 text-white rounded-tr-sm'
-                    : msg.isCrisis 
-                        ? 'bg-rose-50 text-rose-800 border border-rose-200 rounded-tl-sm'
-                        : 'bg-white text-slate-700 border border-slate-100 rounded-tl-sm'
-                }`}
-              >
-                {msg.role === 'ai' && (
-                    <div className="flex items-center gap-2 mb-2 opacity-70">
-                        {msg.isCrisis ? <AlertTriangle className="w-4 h-4 text-rose-600" /> : <Bot className="w-4 h-4" />}
-                        <span className="text-xs font-bold">{msg.isCrisis ? 'SISTEM DARURAT' : 'Sobat SEHATI'}</span>
-                    </div>
-                )}
-                {msg.content}
-              </div>
-            </div>
-          ))}
-          {isLoading && (
-            <div className="flex justify-start">
-              <div className="bg-slate-100 text-slate-500 rounded-2xl rounded-tl-sm p-4 flex items-center gap-2">
-                <Loader2 className="w-4 h-4 animate-spin" />
-                <span className="text-xs">Sedang mengetik...</span>
-              </div>
-            </div>
-          )}
-          <div ref={messagesEndRef} />
-        </div>
-
-        {/* Panic Button Overlay (Only shows when needed) */}
-        {showPanic && (
-            <div className="mb-4 animate-bounce-in">
-                <a 
-                    href="https://wa.me/6281234567890?text=Halo%20Kak%20GenRe,%20aku%20butuh%20bantuan%20darurat.%20Aku%20merasa%20tidak%20aman."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-3 w-full bg-rose-600 hover:bg-rose-700 text-white p-4 rounded-xl shadow-xl shadow-rose-500/30 transition-all font-bold"
-                >
-                    <Phone className="w-5 h-5 animate-pulse" />
-                    HUBUNGI KAKAK GENRE SEKARANG (DARURAT)
-                </a>
-            </div>
-        )}
-
-        {/* Input Area */}
-        <div className="bg-white p-4 rounded-2xl shadow-lg border border-slate-100 mt-auto">
-          <form onSubmit={handleSend} className="flex items-center gap-3">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Ceritakan apa yang kamu rasakan..."
-              className="flex-1 bg-slate-50 border-0 text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500 rounded-xl px-4 py-3"
-              disabled={isLoading}
-            />
-            <button
-              type="submit"
-              disabled={isLoading || !input.trim()}
-              className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md shadow-blue-500/20"
-            >
-              <Send className="w-5 h-5" />
-            </button>
-          </form>
-          <p className="text-center text-[10px] text-slate-400 mt-3">
-            Chat ini bersifat privat. AI bisa membuat kesalahan.
+        {/* Header */}
+        <div className="text-center space-y-2 mb-8 md:mb-12">
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-900">
+            Mau curhat dengan siapa hari ini?
+          </h1>
+          <p className="text-slate-500">
+            Pilih teman ceritamu. Privasi kamu adalah prioritas kami.
           </p>
         </div>
 
-      </main>
+        <div className="grid md:grid-cols-2 gap-6">
+          
+          {/* Card A: Sobat SEHATI (AI) */}
+          <Link 
+            href="/chat/ai"
+            className="group relative overflow-hidden bg-white rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-xl border border-slate-100 transition-all duration-300 hover:-translate-y-1"
+          >
+            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+              <Bot className="w-48 h-48 -mr-12 -mt-12" />
+            </div>
+            
+            <div className="relative z-10 space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-blue-200">
+                <Bot className="w-8 h-8" />
+              </div>
+              
+              <div>
+                <h2 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                  Sobat SEHATI (AI)
+                </h2>
+                <p className="text-slate-500 text-sm mt-2 leading-relaxed">
+                  Teman cerita pintar yang siap mendengarkan 24/7. Respon cepat, tanpa menghakimi, dan rahasia terjamin.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 text-blue-600 font-semibold text-sm pt-4">
+                Mulai Chat <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </Link>
+
+          {/* Card B: Kakak GenRe / Guru BK */}
+          <a 
+            href="https://wa.me/6281234567890?text=Halo%20Kak,%20aku%20ingin%20konsultasi%20lewat%20SEHATI%2B"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative overflow-hidden bg-white rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-xl border border-slate-100 transition-all duration-300 hover:-translate-y-1"
+          >
+            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+              <Users className="w-48 h-48 -mr-12 -mt-12" />
+            </div>
+            
+            <div className="relative z-10 space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white shadow-lg shadow-green-200">
+                <MessageCircle className="w-8 h-8" />
+              </div>
+              
+              <div>
+                <h2 className="text-xl font-bold text-slate-900 group-hover:text-green-600 transition-colors">
+                  Kakak GenRe / Guru BK
+                </h2>
+                <p className="text-slate-500 text-sm mt-2 leading-relaxed">
+                  Butuh solusi lebih mendalam? Ngobrol langsung dengan Kakak Duta GenRe atau Guru BK lewat WhatsApp.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 text-green-600 font-semibold text-sm pt-4">
+                Chat via WhatsApp <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,139 +1,144 @@
 "use client";
 
-import React from 'react';
-import Navbar from "@/components/Navbar";
-import { MapPin, Mail, Trophy, Star, GraduationCap, Target } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { User, LogOut, Award, Star, ShieldCheck, Trophy, Edit3 } from 'lucide-react';
 
-export default function SchoolProfile() {
+export default function ProfilePage() {
+  const router = useRouter();
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('sehati_user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    } else {
+        // Fallback for viewing without login
+        setUser({ name: 'Sobat Sehati', role: 'student', class: 'XI MIPA 3' });
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('sehati_user');
+    router.push('/login');
+  };
+
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <Navbar />
+    <div className="min-h-screen bg-slate-50 pb-24">
       
-      <main className="flex-1">
-        {/* School Hero */}
-        <section className="relative bg-gradient-to-b from-blue-50 to-white py-16 md:py-24 overflow-hidden">
-           <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-           
-           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-             <div className="flex flex-col md:flex-row items-center gap-12">
-                {/* Logo/Image Placeholder */}
-                <div className="flex-shrink-0 relative">
-                  <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-white border-4 border-white shadow-xl flex items-center justify-center p-4 overflow-hidden">
-                     <img src="/logo%20nero.jpg" alt="Logo SMANERO" className="w-full h-full object-contain" />
-                  </div>
-                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full shadow-md whitespace-nowrap">
-                    Terakreditasi A
-                  </div>
+      {/* Profile Header (Banner Style) */}
+      <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white pt-12 pb-24 px-6 rounded-b-[3rem] shadow-lg relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        
+        <div className="relative z-10 flex flex-col items-center text-center space-y-3">
+            <div className="relative">
+                <div className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-sm border-4 border-white/30 flex items-center justify-center text-white text-4xl font-bold shadow-xl">
+                    {user?.name?.charAt(0) || 'S'}
                 </div>
-                
-                <div className="text-center md:text-left">
-                  <h1 className="text-3xl md:text-5xl font-bold text-text-main mb-4">
-                    SMA Negeri Ngoro Jombang
-                  </h1>
-                  <p className="text-lg md:text-xl text-slate-600 italic mb-6 max-w-2xl">
-                    &ldquo;Mencetak Insan yang Berbudi Luhur dan Intelektual Tinggi.&rdquo;
-                  </p>
-                  
-                  <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start text-sm text-slate-600 font-medium">
-                    <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-100">
-                      <MapPin className="h-4 w-4 text-red-500" />
-                      <span>Kauman, Kec. Ngoro, Kab. Jombang</span>
+                <button className="absolute bottom-0 right-0 p-2 bg-white text-blue-600 rounded-full shadow-md hover:bg-slate-100 transition-colors">
+                    <Edit3 className="w-4 h-4" />
+                </button>
+            </div>
+            
+            <div>
+                <h1 className="text-2xl font-bold">{user?.name || 'Sobat Sehati'}</h1>
+                <p className="text-blue-100 text-sm bg-blue-800/30 inline-block px-3 py-1 rounded-full mt-1 border border-blue-500/30">
+                    {user?.class || 'Kelas XI MIPA 3'}
+                </p>
+            </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-xl mx-auto px-6 -mt-16 relative z-20 space-y-6">
+        
+        {/* Stats Card */}
+        <div className="bg-white rounded-3xl shadow-sm border border-slate-100 p-6 flex justify-between items-center">
+            <div className="text-center flex-1 border-r border-slate-100 last:border-0">
+                <p className="text-2xl font-bold text-slate-900">12</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Sesi Curhat</p>
+            </div>
+            <div className="text-center flex-1 border-r border-slate-100 last:border-0">
+                <p className="text-2xl font-bold text-slate-900">5</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Lencana</p>
+            </div>
+            <div className="text-center flex-1">
+                <p className="text-2xl font-bold text-slate-900">850</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Poin</p>
+            </div>
+        </div>
+
+        {/* My Badges Section */}
+        <div className="space-y-3">
+            <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+                <Award className="w-5 h-5 text-yellow-500" />
+                Pencapaian Saya
+            </h2>
+            
+            <div className="grid grid-cols-3 gap-3">
+                {/* Badge 1 */}
+                <div className="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center space-y-2 hover:scale-105 transition-transform">
+                    <div className="w-10 h-10 bg-yellow-50 rounded-full flex items-center justify-center text-yellow-500">
+                        <Trophy className="w-5 h-5" />
                     </div>
-                    <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-100">
-                      <Mail className="h-4 w-4 text-blue-500" />
-                      <span>info@smanegeringoro.sch.id</span>
+                    <div>
+                        <p className="text-xs font-bold text-slate-800">Pemberani</p>
+                        <p className="text-[10px] text-slate-400">Curhat Pertama</p>
                     </div>
-                  </div>
-                </div>
-             </div>
-           </div>
-        </section>
-
-        {/* Visi & Misi Highlights */}
-        <section className="py-16 bg-white">
-           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-             <div className="grid md:grid-cols-3 gap-8">
-                <div className="p-8 rounded-2xl bg-blue-50 border border-blue-100 text-center hover:-translate-y-1 transition-transform duration-300">
-                   <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-                      <Target className="h-8 w-8" />
-                   </div>
-                   <h3 className="font-bold text-xl text-text-main mb-3">Visi Utama</h3>
-                   <p className="text-slate-600 leading-relaxed">
-                     Unggul dalam prestasi akademik dan non-akademik berlandaskan IMTAQ dan IPTEK.
-                   </p>
                 </div>
 
-                <div className="p-8 rounded-2xl bg-yellow-50 border border-yellow-100 text-center hover:-translate-y-1 transition-transform duration-300">
-                   <div className="w-14 h-14 bg-yellow-100 text-yellow-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-                      <Star className="h-8 w-8" />
-                   </div>
-                   <h3 className="font-bold text-xl text-text-main mb-3">Karakter</h3>
-                   <p className="text-slate-600 leading-relaxed">
-                     Mewujudkan lingkungan sekolah yang kondusif, religius, dan berbudaya lingkungan.
-                   </p>
+                {/* Badge 2 */}
+                <div className="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center space-y-2 hover:scale-105 transition-transform">
+                    <div className="w-10 h-10 bg-purple-50 rounded-full flex items-center justify-center text-purple-500">
+                        <Star className="w-5 h-5" />
+                    </div>
+                    <div>
+                        <p className="text-xs font-bold text-slate-800">Pendengar</p>
+                        <p className="text-[10px] text-slate-400">Baca 5 Materi</p>
+                    </div>
                 </div>
 
-                <div className="p-8 rounded-2xl bg-green-50 border border-green-100 text-center hover:-translate-y-1 transition-transform duration-300">
-                   <div className="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-                      <GraduationCap className="h-8 w-8" />
-                   </div>
-                   <h3 className="font-bold text-xl text-text-main mb-3">Kompetensi</h3>
-                   <p className="text-slate-600 leading-relaxed">
-                     Membekali peserta didik dengan keterampilan hidup (Life Skill) untuk masa depan.
-                   </p>
+                {/* Badge 3 (Locked) */}
+                <div className="bg-slate-50 p-3 rounded-2xl border border-slate-100 flex flex-col items-center text-center space-y-2 grayscale opacity-70">
+                    <div className="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center text-slate-400">
+                        <ShieldCheck className="w-5 h-5" />
+                    </div>
+                    <div>
+                        <p className="text-xs font-bold text-slate-600">Konselor Muda</p>
+                        <p className="text-[10px] text-slate-400">Terkunci</p>
+                    </div>
                 </div>
-             </div>
-           </div>
-        </section>
+            </div>
+        </div>
 
-        {/* Prestasi & Program */}
-        <section className="py-20 bg-bg-soft">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-             <div className="text-center mb-16">
-               <h2 className="text-3xl font-bold text-text-main mb-4">Prestasi & Program Unggulan</h2>
-               <p className="text-slate-600">SMANERO terus berinovasi menciptakan generasi emas.</p>
-             </div>
+        {/* Account Settings */}
+        <div className="space-y-3">
+            <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+                <User className="w-5 h-5 text-blue-600" />
+                Akun
+            </h2>
+            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+                <button className="w-full flex items-center justify-between p-4 hover:bg-slate-50 transition-colors border-b border-slate-50">
+                    <span className="text-sm font-medium text-slate-700">Edit Profil</span>
+                    <span className="text-slate-400 text-xs">→</span>
+                </button>
+                <button className="w-full flex items-center justify-between p-4 hover:bg-slate-50 transition-colors border-b border-slate-50">
+                    <span className="text-sm font-medium text-slate-700">Ubah Password</span>
+                    <span className="text-slate-400 text-xs">→</span>
+                </button>
+                <button 
+                    onClick={handleLogout}
+                    className="w-full flex items-center justify-between p-4 hover:bg-rose-50 transition-colors text-rose-600"
+                >
+                    <span className="text-sm font-bold flex items-center gap-2">
+                        <LogOut className="w-4 h-4" />
+                        Keluar Aplikasi
+                    </span>
+                </button>
+            </div>
+        </div>
 
-             <div className="grid md:grid-cols-2 gap-8">
-               {/* Card 1 */}
-               <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col md:flex-row">
-                  <div className="md:w-1/3 bg-slate-200 h-48 md:h-auto relative">
-                     {/* Placeholder Image */}
-                     <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
-                        <Trophy className="h-12 w-12 text-primary opacity-50" />
-                     </div>
-                  </div>
-                  <div className="p-6 md:w-2/3">
-                     <div className="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold mb-3">Religius</div>
-                     <h3 className="font-bold text-xl text-text-main mb-2">Program Tahfidz Nero</h3>
-                     <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                       Program unggulan menghafal Al-Qur&rsquo;an bagi siswa-siswi, mencetak generasi yang cerdas intelektual dan spiritual.
-                     </p>
-                     <button className="text-primary font-semibold text-sm hover:underline">Selengkapnya &rarr;</button>
-                  </div>
-               </div>
-
-               {/* Card 2 */}
-               <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col md:flex-row">
-                  <div className="md:w-1/3 bg-slate-200 h-48 md:h-auto relative">
-                     {/* Placeholder Image */}
-                     <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-secondary/20 to-accent/20">
-                        <Trophy className="h-12 w-12 text-secondary opacity-50" />
-                     </div>
-                  </div>
-                  <div className="p-6 md:w-2/3">
-                     <div className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold mb-3">Prestasi</div>
-                     <h3 className="font-bold text-xl text-text-main mb-2">Duta Anti Narkoba & Pelajar</h3>
-                     <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                       Siswa SMANERO aktif sebagai pelopor gerakan anti-narkoba dan berprestasi dalam ajang pemilihan Duta Pelajar Jombang.
-                     </p>
-                     <button className="text-primary font-semibold text-sm hover:underline">Selengkapnya &rarr;</button>
-                  </div>
-               </div>
-             </div>
-          </div>
-        </section>
-      </main>
+      </div>
     </div>
   );
 }
