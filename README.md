@@ -1,141 +1,173 @@
-Siap, Mas\! Ini adalah versi **README.md Final** yang sudah saya "permak" habis-habisan.
-
-**Update Terbarunya:**
-
-
 # 💙 SEHATI+ (Sistem Ekosistem Hati & Intelegensi)
 
-![Banner Project](https://capsule-render.vercel.app/api?type=waving&color=009CEB&height=220&section=header&text=SEHATI%2B&fontSize=80&fontColor=ffffff&desc=Mental%20Health%20Ecosystem%20for%20Gen-Z%20%7C%20AI%20x%20Human%20Touch&descAlignY=65&descAlign=50)
+![Banner Project](https://capsule-render.vercel.app/api?type=waving&color=009CEB&height=250&section=header&text=SEHATI%2B&fontSize=80&fontColor=ffffff&desc=Revolutionizing%20Gen-Z%20Mental%20Health%20with%20AI&descAlignY=65&descAlign=50)
 
 <div align="center">
 
 [![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E?style=for-the-badge&logo=supabase)](https://supabase.com/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel)](https://sehatipluss.vercel.app)
 
-**Official Innovation Project of [SMAN Negeri Ngoro Jombang](https://smanegeringoro.sch.id/)**
-*Supported by PIK-R PILAR & BKKBN Jombang*
+**Proyek Inovasi Unggulan [SMAN Negeri Ngoro Jombang](https://smanegeringoro.sch.id/)**
+*Didukung Penuh oleh PIK-R PILAR & BKKBN Jombang*
 
-[🌐 Live Demo](https://sehatipluss.vercel.app) · [📷 Instagram Dev](https://www.instagram.com/syarfddn_yhya) · [🐛 Report Bug](https://github.com/yhyaa294/SEHATI-/issues)
+[🌐 Kunjungi Website](https://sehatipluss.vercel.app) · [📷 Instagram Developer](https://www.instagram.com/syarfddn_yhya) · [🐛 Laporkan Isu](https://github.com/yhyaa294/SEHATI-/issues)
 
 </div>
 
 ---
 
+## 📑 Daftar Isi
+1. [Tentang Projek](#-tentang-projek)
+2. [Latar Belakang Masalah](#-latar-belakang-masalah)
+3. [Fitur Unggulan](#-fitur-unggulan)
+4. [Ekosistem Startup Developer](#-ekosistem-startup-developer)
+5. [Model Bisnis](#-model-bisnis-sustainability)
+6. [Teknologi (Tech Stack)](#-teknologi-tech-stack)
+7. [Instalasi](#-instalasi-local-development)
+8. [Roadmap Pengembangan](#-roadmap-pengembangan)
+9. [Tim & Mitra](#-tim--mitra)
+
+---
+
 ## 📖 Tentang Projek
 
-**SEHATI+** adalah platform kesehatan mental revolusioner yang dirancang khusus untuk Gen Z. Kami menggabungkan kecepatan **Artificial Intelligence (AI)** dengan sentuhan manusiawi dari **Duta GenRe** untuk menciptakan "Ruang Aman Digital" bagi siswa.
+**SEHATI+** (Sistem Ekosistem Hati & Intelegensi) adalah platform kesehatan mental berbasis web (PWA) yang dirancang khusus untuk Generasi Z.
 
-Dikembangkan oleh **Yahya (Top 20 AI Talent Hub Indonesia)**, aplikasi ini mengatasi masalah klasik konseling sekolah: **Rasa Malu, Takut Dihakimi, dan Keterbatasan Waktu.**
+Kami menggabungkan kecanggihan **Artificial Intelligence (AI)** sebagai "First Responder" dengan pendekatan humanis dari **Duta GenRe (Generasi Berencana)**. Tujuannya adalah menciptakan ekosistem konseling yang **Inklusif, Privat, dan Modern**.
 
-### 🌟 Mengapa SEHATI+?
-> "Karena setiap cerita berhak didengar, dan setiap perasaan itu valid."
-
-* **⚡ First Responder AI:** Penanganan awal 24/7 untuk validasi emosi siswa tanpa *judgement*.
-* **🛡️ Privasi Terjamin:** Sistem anonim tanpa "spill" ke guru mata pelajaran.
-* **🤝 Hybrid Counseling:** Integrasi mulus antara Bot dan Manusia (Konselor PIK-R PILAR).
+> *"Kami percaya bahwa teknologi tidak menggantikan empati manusia, tetapi memperluas jangkauannya."*
 
 ---
 
-## 📸 Tampilan Aplikasi (Sneak Peek)
+## 🚩 Latar Belakang Masalah
 
-| **Landing Page** | **Dashboard Siswa** |
-|:---:|:---:|
-| <img src="https://via.placeholder.com/400x200?text=Insert+Screenshot+Landing" alt="Landing Page" width="400"> | <img src="https://via.placeholder.com/400x200?text=Insert+Screenshot+Dashboard" alt="Dashboard" width="400"> |
-| *Tampilan modern & welcoming* | *Mood tracker & akses fitur cepat* |
+Aplikasi ini lahir dari keresahan nyata di lingkungan sekolah:
+* **Stigma Negatif:** Siswa takut masuk ruang BK karena dianggap "bermasalah" atau "nakal".
+* **Keterbatasan Akses:** Guru BK memiliki jam kerja terbatas, sementara krisis mental sering terjadi di malam hari.
+* **Rasa Malu:** Siswa enggan bercerita tentang masalah sensitif (percintaan, keluarga, bullying) secara tatap muka.
 
-> *Catatan: Aplikasi menggunakan desain Glassmorphism dan Bento Grid Layout yang ramah pengguna.*
-
----
-
-## 🚀 Fitur Utama (Core Features)
-
-### 1. 🤖 Sobat SEHATI (AI Chatbot)
-Menggunakan *Fine-Tuned Prompt Engineering* untuk bertindak sebagai teman sebaya yang suportif. Mampu mendeteksi sentimen negatif (marah/sedih/cemas) dan memberikan validasi psikologis awal.
-
-### 2. 💬 Konseling GenRe (WhatsApp Integration)
-Jalur cepat ("Panic Button") untuk terhubung langsung dengan Duta GenRe dari **PIK-R PILAR** SMANERO melalui WhatsApp API untuk penanganan kasus yang lebih kompleks.
-
-### 3. 📊 Mood Tracker & Analytics
-Siswa dapat merekam emosi harian mereka. Data ini (anonim) menjadi bahan evaluasi kesehatan mental sekolah secara *real-time* bagi Guru BK.
-
-### 4. 📚 Edukasi Interaktif
-Modul "Pojok Materi" yang menyajikan info seputar Triad KRR (Kesehatan Reproduksi, NAPZA, Pernikahan Dini) dengan gaya bahasa remaja.
+**Solusi SEHATI+:**
+Memberikan akses 24/7 melalui AI yang anonim, sekaligus jembatan aman menuju konseling manusia jika diperlukan.
 
 ---
 
-## 💼 Model Bisnis (Sustainability)
+## 🚀 Fitur Unggulan
 
-Kami menerapkan strategi **Hybrid B2B & Affiliate** untuk menjamin keberlanjutan operasional:
+### 1. 🤖 Sobat SEHATI (AI Counselor)
+Menggunakan LLM (Large Language Model) yang di-tuning dengan prompt psikologis.
+* **Empati Tinggi:** Bukan sekadar bot penjawab, tapi pendengar yang memvalidasi perasaan.
+* **Safety Guardrails:** Mendeteksi kata kunci bahaya (seperti *self-harm*) dan otomatis menyarankan bantuan profesional.
 
-1.  **Program Sekolah Sehati (B2B Services):**
-    Layanan Workshop & Sosialisasi Kesehatan Mental ke sekolah-sekolah lain, menggunakan aplikasi SEHATI+ sebagai alat monitoring.
-2.  **Healing Corner (Affiliate):**
-    Kurasi produk kesehatan mental (Jurnal, Buku Self-help, Fidget Toys) dengan sistem komisi.
+### 2. 🚨 Panic Button (Chat GenRe)
+Integrasi API WhatsApp langsung ke nomor khusus Duta GenRe **PIK-R PILAR**.
+* Satu klik untuk terhubung dengan manusia.
+* Cocok untuk siswa yang butuh penanganan lebih kompleks.
+
+### 3. 📈 Mood Analytics
+Dashboard interaktif bagi siswa untuk merekam *Daily Mood*.
+* Membantu siswa mengenali pola emosi mereka sendiri.
+* Memberikan data agregat (anonim) bagi sekolah untuk memetakan "kesehatan mental" satu angkatan.
+
+### 4. 🔐 Privacy-First Architecture
+* Sistem login aman.
+* Opsi penggunaan nama samaran (alias) di dashboard konseling.
+* Data terenkripsi di server Supabase.
+
+---
+
+## 💼 Ekosistem Startup Developer
+
+Projek ini dikembangkan oleh **Yahya (@syarfddn_yhya)**, Top 20 AI Talent Hub Indonesia, sebagai bagian dari ekosistem inovasi digital yang lebih luas:
+
+| **Nama Startup** | **Fungsi** | **Link** |
+| :--- | :--- | :--- |
+| **Pasalku.ai** | Asisten Hukum Cerdas berbasis AI untuk masyarakat umum. | [![IG](https://img.shields.io/badge/Instagram-Pasalku.ai-E4405F?logo=instagram)](https://www.instagram.com/pasalku.ai) |
+| **SmartAPD** | Teknologi IoT & AI untuk Keselamatan dan Kesehatan Kerja (K3). | [![IG](https://img.shields.io/badge/Instagram-SmartAPD-E4405F?logo=instagram)](https://www.instagram.com/smartapd) |
+| **UMMIGO** | Chatbot Otomatisasi Customer Service untuk UMKM. | [![IG](https://img.shields.io/badge/Instagram-UMMIGO-E4405F?logo=instagram)](https://www.instagram.com/ummigo) |
+
+---
+
+## 💸 Model Bisnis (Sustainability)
+
+Bagaimana SEHATI+ tetap hidup dan berkembang?
+
+1.  **B2B Service (Program Sekolah Sehati):**
+    Menawarkan paket instalasi sistem SEHATI+ + Workshop Kesehatan Mental ke sekolah-sekolah lain di Jawa Timur.
+2.  **Affiliate Marketing (Healing Corner):**
+    Kurasi produk kesehatan mental (Buku Jurnal, Aromaterapi, Stress Ball) di dalam aplikasi dengan sistem komisi.
 3.  **Community Support:**
-    Dukungan donasi terbuka melalui Saweria bagi alumni/masyarakat yang peduli.
+    Dukungan donasi sukarela melalui Saweria/Trakteer dari alumni dan orang tua siswa.
+
+---
+
+## 💻 Teknologi (Tech Stack)
+
+Dibangun dengan teknologi terkini untuk performa maksimal:
+
+* **Frontend:** Next.js 14 (App Router), React, Lucide Icons.
+* **Styling:** Tailwind CSS (Mobile-first design).
+* **Backend / Database:** Supabase (PostgreSQL).
+* **Authentication:** Custom Auth Logic.
+* **Deployment:** Vercel Global CDN.
 
 ---
 
 ## 🛠️ Instalasi (Local Development)
 
-Ingin menjalankan projek ini di laptopmu? Gas!
+Ikuti langkah ini untuk menjalankan SEHATI+ di komputer lokal Anda:
 
 ```bash
-# 1. Clone Repository
-git clone [https://github.com/yhyaa294/SEHATI-.git](https://github.com/yhyaa294/SEHATI-.git)
+# 1. Clone Repository ini
+git clone https://github.com/yhyaa294/SEHATI-.git
+
+# 2. Masuk ke direktori project
 cd SEHATI-
 
-# 2. Install Dependencies
+# 3. Install semua dependencies
 npm install
 
-# 3. Setup Environment (.env.local)
-# Masukkan kredensial Supabase kamu di file .env.local
+# 4. Setup Environment Variables
+# Buat file .env.local dan isi URL & KEY Supabase Anda
+# NEXT_PUBLIC_SUPABASE_URL=...
+# NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 
-# 4. Run Server
+# 5. Jalankan server development
 npm run dev
-````
+```
 
------
+---
 
-## 👨‍💻 Developer & Ecosystem
+## 🗺️ Roadmap Pengembangan
 
-Projek ini dibangun dengan passion oleh:
+- [x] **Fase 1 (MVP):** Rilis Landing Page, Chat AI Dasar, Integrasi WA.
+- [ ] **Fase 2 (Q1 2026):** Dashboard Admin Khusus Guru BK dengan Analitik Data Lanjutan.
+- [ ] **Fase 3 (Q3 2026):** Fitur Tele-konseling Video Call di dalam aplikasi.
+- [ ] **Fase 4 (Q4 2026):** Ekspansi ke 10 SMA di Kabupaten Jombang.
 
-\<div align="center"\>
+---
 
-### **Yahya (@syarfddn\_yhya)**
+## 🤝 Tim & Mitra
 
-*Lead Developer & Product Manager*
-🏆 **Top 20 AI Talent Hub Indonesia (Universitas Indonesia)**
-
-[](https://www.google.com/url?sa=E&source=gmail&q=https://www.instagram.com/syarfddn_yhya)
-
------
-
-### 🚀 Other Innovative Projects by Yahya
-
-| **Pasalku.ai** | **SmartAPD** | **UMMIGO** |
-|:---:|:---:|:---:|
-| ⚖️ *AI Legal Assistant* | 🛡️ *Safety Tech* | 🤖 *UMKM AI Chatbot* |
-| [](https://www.google.com/search?q=https://www.instagram.com/pasalku.ai) | [](https://www.google.com/search?q=https://www.instagram.com/smartapd) | [](https://www.google.com/search?q=https://www.instagram.com/ummigo) |
-
------
-
-### 🤝 Strategic Partners
-
-**SMAN Negeri Ngoro Jombang**
-**PIK-R PILAR**
-**BKKBN Jombang**
-
-\</div\>
-
------
-
-\<div align="center"\>
-\<small\>Dibuat dengan 💙 dan ☕ untuk masa depan remaja Indonesia.\</small\>
+**Lead Developer & Founder:**
 <br>
-\<small\>© 2025 SEHATI+ Project. All Rights Reserved.\</small\>
-\</div\>
+**Yahya**
+<br>
+*Top 20 AI Talent Hub Indonesia (Universitas Indonesia)*
+<br>
+Connect: [Instagram @syarfddn_yhya](https://www.instagram.com/syarfddn_yhya)
+
+**Mitra Resmi:**
+* **SMAN Negeri Ngoro Jombang** ([Website](https://smanegeringoro.sch.id/))
+* **PIK-R PILAR** (Pusat Informasi & Konseling Remaja)
+* **BKKBN Kabupaten Jombang**
+
+---
+
+<div align="center">
+  <small>© 2025 SEHATI+ Project. Hak Cipta Dilindungi Undang-Undang.</small>
+  <br>
+  <small>Dibuat dengan 💙, ☕, dan Baris Kode.</small>
+</div>
