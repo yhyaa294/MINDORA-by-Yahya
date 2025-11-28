@@ -92,23 +92,30 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 text-center">
             <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-8">Didukung penuh oleh ekosistem pendidikan & keluarga:</p>
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-                {/* Using existing logos as placeholders for the requested institutions */}
+                {/* Ummigo Logo */}
                 <div className="group flex flex-col items-center gap-2">
-                    <img src="/logo%20nero.jpg" alt="SMAN Negeri Ngoro" className="h-14 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" />
-                    <span className="text-xs text-slate-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">SMAN Ngoro</span>
+                    <img src="/logo%20ummigo.png" alt="Ummigo" className="h-14 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100 object-contain" />
+                    <span className="text-xs text-slate-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">Ummigo</span>
                 </div>
+                {/* Pasalku AI Logo */}
+                <div className="group flex flex-col items-center gap-2">
+                    <img src="/logo%20pasalku.ai.jpg" alt="Pasalku AI" className="h-14 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100 rounded-lg" />
+                    <span className="text-xs text-slate-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">Pasalku AI</span>
+                </div>
+                {/* SmartAPD Logo */}
+                <div className="group flex flex-col items-center gap-2">
+                    <img src="/logo%20smartapd.jpg" alt="SmartAPD" className="h-14 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100 rounded-lg" />
+                    <span className="text-xs text-slate-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">SmartAPD</span>
+                </div>
+                 {/* BKKBN Logo */}
                 <div className="group flex flex-col items-center gap-2">
                     <img src="/logo%20bkkbn.webp" alt="BKKBN" className="h-14 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" />
                     <span className="text-xs text-slate-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">BKKBN</span>
                 </div>
+                {/* GenRe Logo */}
                 <div className="group flex flex-col items-center gap-2">
                     <img src="/logo%20genre.webp" alt="GenRe Indonesia" className="h-14 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" />
                     <span className="text-xs text-slate-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">GenRe Indonesia</span>
-                </div>
-                <div className="group flex flex-col items-center gap-2">
-                    {/* Placeholder for PIK-R using GenRe logo as fallback since PIK-R is related */}
-                    <img src="/logo%20genre.webp" alt="PIK-R" className="h-14 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" />
-                    <span className="text-xs text-slate-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">PIK-R</span>
                 </div>
             </div>
         </div>

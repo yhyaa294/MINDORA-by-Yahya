@@ -47,11 +47,23 @@ export default function Footer() {
           <div>
              <h4 className="font-bold text-slate-900 mb-6 text-lg">Didukung Oleh</h4>
              <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100 inline-block">
-                <img 
-                  src="/logo%20bkkbn.webp" 
-                  alt="BKKBN Logo" 
-                  className="h-12 w-auto hover:scale-105 transition-transform opacity-80 hover:opacity-100" 
-                />
+                <div className="flex items-center gap-4">
+                    <img 
+                      src="/logo%20ummigo.png" 
+                      alt="Ummigo" 
+                      className="h-10 w-auto hover:scale-105 transition-transform opacity-80 hover:opacity-100" 
+                    />
+                    <img 
+                      src="/logo%20pasalku.ai.jpg" 
+                      alt="Pasalku AI" 
+                      className="h-10 w-auto hover:scale-105 transition-transform opacity-80 hover:opacity-100 rounded-md" 
+                    />
+                    <img 
+                      src="/logo%20smartapd.jpg" 
+                      alt="SmartAPD" 
+                      className="h-10 w-auto hover:scale-105 transition-transform opacity-80 hover:opacity-100 rounded-md" 
+                    />
+                </div>
              </div>
              <div className="mt-6 flex items-start gap-3 text-sm text-slate-500">
                 <MapPin className="w-5 h-5 text-slate-400 mt-0.5 shrink-0" />
