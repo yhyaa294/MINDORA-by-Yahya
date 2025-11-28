@@ -67,20 +67,6 @@ export default function CounselorDashboard() {
               </button>
             </nav>
           </div>
-              <button className="w-full flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-50 rounded-xl font-medium transition-colors">
-                <Bell className="h-5 w-5" />
-                Chat Masuk <span className="ml-auto bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full">3</span>
-              </button>
-              <button className="w-full flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-50 rounded-xl font-medium transition-colors">
-                <Calendar className="h-5 w-5" />
-                Janji Temu
-              </button>
-              <button className="w-full flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-50 rounded-xl font-medium transition-colors">
-                <Users className="h-5 w-5" />
-                Data Siswa
-              </button>
-            </nav>
-          </div>
           
           <div className="bg-gradient-to-br from-primary to-secondary rounded-2xl p-6 text-white shadow-lg">
             <h4 className="font-bold text-lg mb-2">Tips Konselor</h4>
