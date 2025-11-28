@@ -19,11 +19,13 @@ export default function Hero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        
+        {/* Force Centered Layout */}
+        <div className="flex flex-col items-center text-center">
           
-          {/* Left Content */}
-          <div className="space-y-8 z-10">
-            <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-blue-100">
+          {/* Text & Badges - CENTERED */}
+          <div className="space-y-8 z-10 max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-blue-100 mx-auto">
               <span className="flex h-2 w-2 rounded-full bg-blue-600 animate-pulse"></span>
               <span className="text-sm font-bold text-blue-800 tracking-wide">Platform Kesehatan Mental Remaja Pertama di Jombang</span>
             </div>
@@ -35,11 +37,11 @@ export default function Hero() {
               </span>
             </h1>
             
-            <p className="text-lg text-slate-700 max-w-lg leading-relaxed font-medium">
+            <p className="text-lg text-slate-700 max-w-2xl mx-auto leading-relaxed font-medium">
               Ruang aman untuk bercerita, belajar, dan tumbuh. Didukung oleh AI cerdas dan konselor sebaya yang mengerti kamu. Privasi 100% terjaga.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/chat" 
                 className="inline-flex justify-center items-center px-8 py-4 rounded-full bg-gradient-to-r from-blue-700 to-blue-600 text-white font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all transform hover:-translate-y-1"
@@ -55,7 +57,7 @@ export default function Hero() {
               </Link>
             </div>
 
-            <div className="flex items-center gap-6 pt-4">
+            <div className="flex items-center justify-center gap-6 pt-4">
               <div className="flex -space-x-2">
                 {[1,2,3,4].map((i) => (
                   <div key={i} className="h-10 w-10 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-xs font-bold text-slate-400 overflow-hidden shadow-sm">
@@ -64,38 +66,38 @@ export default function Hero() {
                   </div>
                 ))}
               </div>
-              <div className="text-sm text-slate-600">
+              <div className="text-sm text-slate-600 text-left">
                 <p className="font-bold text-slate-900">1,000+ Siswa</p>
                 <p>Telah bergabung</p>
               </div>
             </div>
           </div>
           
-          {/* Right Image/Card */}
-          <div className="relative z-10">
-            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-200/50 border-[6px] border-white/50 bg-gradient-to-br from-white/40 to-white/10 backdrop-blur-xl min-h-[450px] flex items-center justify-center group transition-transform hover:scale-[1.02] duration-500">
+          {/* Glass Card - MOVED BELOW & CENTERED */}
+          <div className="relative z-10 mt-16">
+            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-200/50 border-[6px] border-white/50 bg-gradient-to-br from-white/40 to-white/10 backdrop-blur-xl min-h-[300px] w-full max-w-md mx-auto flex items-center justify-center group transition-transform hover:scale-[1.02] duration-500">
                {/* Glass Shine */}
                <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-transparent to-transparent opacity-50"></div>
                
-               <div className="relative w-72 h-72">
+               <div className="relative w-full p-8">
                  {/* Floating Elements: Blue & Gold Only */}
-                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-bounce-slow"></div>
-                 <div className="absolute top-10 left-0 w-32 h-32 bg-amber-400 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-bounce-slow animation-delay-1000"></div>
-                 <div className="absolute -bottom-8 left-20 w-32 h-32 bg-cyan-400 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-bounce-slow animation-delay-2000"></div>
+                 <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-bounce-slow"></div>
+                 <div className="absolute top-10 left-0 w-24 h-24 bg-amber-400 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-bounce-slow animation-delay-1000"></div>
                  
                  {/* Main Card Content */}
-                 <div className="relative flex flex-col items-center justify-center h-full text-center p-8 bg-white/80 backdrop-blur-md rounded-3xl shadow-xl border border-white/60">
+                 <div className="relative flex flex-col items-center justify-center h-full text-center">
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center text-white shadow-lg mb-4">
                         <ShieldCheck className="h-8 w-8" />
                     </div>
                     <h3 className="font-bold text-xl text-slate-900 mb-1">Privasi Terjaga</h3>
-                    <p className="text-sm text-slate-500 leading-relaxed">
+                    <p className="text-sm text-slate-500 leading-relaxed max-w-xs mx-auto">
                         Cerita kamu 100% rahasia.<br/>Hanya kamu & konselor yang tahu.
                     </p>
                  </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
