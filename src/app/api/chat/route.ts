@@ -125,6 +125,13 @@ INSTRUKSI:
     } catch (geminiError) {
         console.error("🔥 Gemini API Error:", geminiError);
         // --- LAST RESORT: FALLBACK JIKA GEMINI CRASH ---
+        // Forcing error for debug if key exists but fails
+        if (apiKey) {
+             return NextResponse.json({ 
+                response: `Waduh, otakku lagi error nih (API Error: ${geminiError}). Coba tanya yang lain dulu ya?`, 
+                isCrisis: false 
+            });
+        }
         return NextResponse.json(generateFallbackResponse(message));
     }
 
