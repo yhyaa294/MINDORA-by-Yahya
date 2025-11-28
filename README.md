@@ -83,7 +83,7 @@ Modul "Pojok Materi" yang menyajikan info seputar Triad KRR (Kesehatan Reproduks
 
 ## 💼 Ekosistem Startup Developer
 
-Projek ini dikembangkan oleh **Muhammad Syarifuddin Yahya (ig/tt @syarfddn_yhya)**, Top 20 AI Talent Hub Indonesia, sebagai bagian dari ekosistem inovasi digital yang lebih luas:
+Projek ini dikembangkan oleh **Muhammad Syarifuddin Yahya ( ig/tt @syarfddn_yhya)**, Top 20 AI Talent Hub Indonesia, sebagai bagian dari ekosistem inovasi digital yang lebih luas:
 
 | **Nama Startup** | **Deskripsi Singkat** | **Instagram** |
 | :--- | :--- | :--- |
@@ -148,9 +148,9 @@ Akses aplikasi di `http://localhost:3000`.
 ## 🗺️ Roadmap Pengembangan
 
 - [x] **Fase 1 (MVP):** Rilis Landing Page, Chat AI Dasar, Integrasi WA.
-- [ ] **Fase 2:** Dashboard Admin Khusus Guru BK dengan Analitik Data Lanjutan.
-- [ ] **Fase 3:** Ubah Web App ke Mobile App dan tambahkan fitur Tele-konseling Video Call di dalam aplikasi.
-- [ ] **Fase 4:** Ekspansi ke 10 SMA di Kabupaten Jombang.
+- [ ] **Fase 2 :** Dashboard Admin Khusus Guru BK dengan Analitik Data Lanjutan.
+- [ ] **Fase 3 :**  ubah Web App ke Mobile App dan tambahkan fitur Tele-konseling Video Call di dalam aplikasi.
+- [ ] **Fase 4 :** Ekspansi ke 10 SMA di Kabupaten Jombang.
 
 ---
 
