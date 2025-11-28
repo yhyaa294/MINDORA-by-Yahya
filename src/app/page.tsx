@@ -3,7 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Heart, Users, Zap } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Heart, Users, Zap, CheckCircle } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -67,9 +67,9 @@ export default function Home() {
                 <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
                    <Zap className="h-7 w-7" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Respon Kilat AI</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Teman Cerita 24 Jam</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Curhat kapan saja, di mana saja. AI kami siap mendengarkan 24/7 dengan respon yang empatik dan solutif.
+                  AI kami dilatih untuk menjadi pendengar pertama yang baik saat kamu galau tengah malam. Tanpa menghakimi, selalu validasi perasaanmu.
                 </p>
               </div>
 
@@ -77,9 +77,9 @@ export default function Home() {
                 <div className="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 mb-6 group-hover:scale-110 transition-transform">
                    <Users className="h-7 w-7" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Konselor Sebaya</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Curhat ke &lsquo;Kakak-an&rsquo;</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Butuh teman ngobrol yang nyata? Terhubung langsung dengan Kakak GenRe melalui WhatsApp dengan satu klik.
+                  Kadang kamu butuh saran dari manusia nyata yang &ldquo;satu frekuensi&rdquo;. Ngobrol santai dengan Duta GenRe via WhatsApp jika butuh bantuan lebih.
                 </p>
               </div>
 
@@ -87,9 +87,9 @@ export default function Home() {
                 <div className="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center text-red-600 mb-6 group-hover:scale-110 transition-transform">
                    <ShieldCheck className="h-7 w-7" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Privasi Aman</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Ruang Aman Tanpa &lsquo;Spill&rsquo;</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Ceritamu adalah rahasiamu. Sistem kami didesain untuk menjaga kerahasiaan data dan identitasmu.
+                  Ceritamu berhenti di sini. Kami menggunakan sistem anonim (tanpa nama asli) di dashboard konselor agar kamu nyaman jadi diri sendiri.
                 </p>
               </div>
            </div>
@@ -106,10 +106,10 @@ export default function Home() {
                     Program Sekolah Sehati
                  </div>
                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-                   Bawa Perubahan Positif ke Sekolahmu.
+                   Jadikan Sekolahmu &ldquo;Zona Nyaman&rdquo; Mental.
                  </h2>
                  <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-                   Kami tidak hanya menyediakan aplikasi. Tim Duta GenRe SEHATI+ siap datang ke sekolahmu untuk memberikan <strong>Workshop Kesehatan Mental & Sosialisasi Anti-Bullying</strong> yang seru dan interaktif.
+                   Paket kolaborasi lengkap: aplikasi monitoring siswa + workshop seru Anti-Bullying dari tim Duta GenRe. Bukan sekadar ceramah membosankan.
                  </p>
                  
                  <div className="space-y-4 mb-8">
@@ -142,10 +142,30 @@ export default function Home() {
                  <div className="absolute inset-0 bg-gradient-to-tr from-green-100 to-blue-50 rounded-3xl transform rotate-3 scale-105 -z-10"></div>
                  <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-xl relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-bl-full -mr-10 -mt-10"></div>
-                    <div className="relative z-10 text-center py-12">
-                       <Users className="h-24 w-24 text-green-500 mx-auto mb-6 opacity-80" />
-                       <h3 className="text-2xl font-bold text-slate-900 mb-2">Sudah 10+ Sekolah</h3>
-                       <p className="text-slate-500">Telah berkolaborasi menciptakan lingkungan sekolah yang lebih sehat mental.</p>
+                    <div className="relative z-10 py-12 space-y-6">
+                      <div className="flex items-start gap-4">
+                        <div className="bg-green-100 p-3 rounded-2xl text-green-600">
+                          <Users className="h-8 w-8" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-green-600">Untuk Kepala Sekolah</p>
+                          <h3 className="text-2xl font-bold text-slate-900">Mengapa Berkolaborasi?</h3>
+                        </div>
+                      </div>
+                      <ul className="space-y-4 text-slate-600 text-sm font-medium">
+                        <li className="flex items-start gap-3">
+                          <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
+                          <span>Deteksi dini masalah bullying & stres siswa.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
+                          <span>Laporan data kesehatan mental sekolah (anonim).</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
+                          <span>Mendukung program Sekolah Ramah Anak & GenRe.</span>
+                        </li>
+                      </ul>
                     </div>
                  </div>
               </div>
