@@ -3,7 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { ArrowRight, Shield, Users, Zap, MessageCircle, ChevronDown, Handshake, Check, Heart, BookOpen, Lock, Activity, Calendar, Globe, Scale } from 'lucide-react';
+import { ArrowRight, Shield, Users, Zap, MessageCircle, Heart, BookOpen, Lock, Activity } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Home() {
