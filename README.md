@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SEHATI+ (Sistem Ekosistem Hati & Intelegensi) 💙
 
-## Getting Started
+> **Platform Kesehatan Mental & Konseling Siswa Terintegrasi AI**
+> *Official Project for SMAN Negeri Ngoro Jombang & PIK-R GenRe*
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-14-black) ![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind_CSS-blue) ![Status](https://img.shields.io/badge/Status-MVP_Ready-green)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌟 Tentang Projek
+**SEHATI+** adalah aplikasi berbasis web yang dirancang untuk mengatasi masalah kesehatan mental remaja (Gen Z) dengan pendekatan yang ramah, privat, dan modern. Aplikasi ini menggabungkan kecerdasan buatan (AI) sebagai pertolongan pertama (First Responder) dengan konseling manusia (Duta GenRe) untuk penanganan lebih lanjut.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Proyek ini dikembangkan sebagai inovasi teknologi di lingkungan **SMAN Ngoro Jombang**, mendukung program **BKKBN** dan **GenRe (Generasi Berencana)**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Fitur Unggulan
+1.  **🤖 Sobat SEHATI (AI Chatbot):** Teman curhat virtual 24/7 yang empatik dan non-judgmental.
+2.  **💬 Chat Kakak GenRe:** Integrasi langsung ke WhatsApp untuk konseling dengan Duta GenRe.
+3.  **📊 Mood Tracker:** Jurnal harian untuk memantau grafik emosi siswa.
+4.  **📚 Pojok Edukasi:** Modul interaktif tentang Kesehatan Mental, NAPZA, dan Seksualitas.
+5.  **💼 Business Ecosystem:** Fitur afiliasi "Healing Corner" dan layanan Workshop Sekolah.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Teknologi yang Digunakan
+* **Framework:** [Next.js 14](https://nextjs.org/) (App Router)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/) + Lucide Icons
+* **Language:** TypeScript
+* **Authentication:** Custom Auth Logic (MVP)
+* **Deployment:** Vercel / GitHub Pages
 
-## Learn More
+## 📦 Cara Menjalankan (Local)
 
-To learn more about Next.js, take a look at the following resources:
+1.  **Clone repository:**
+    ```bash
+    git clone https://github.com/yhyaa294/SEHATI-.git
+    cd SEHATI-
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3.  **Jalankan server development:**
+    ```bash
+    npm run dev
+    ```
 
-## Deploy on Vercel
+4.  Buka [http://localhost:3000](http://localhost:3000) di browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 💡 Model Bisnis (Sustainability)
+* **B2B Service:** Jasa Workshop & Sosialisasi GenRe ke sekolah mitra.
+* **Affiliate:** Rekomendasi produk self-care (Healing Kit).
+* **Crowdfunding:** Dukungan komunitas via Saweria.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 👨‍💻 Tim Pengembang
+* **Lead Developer:** Yahya (@syarfddn_yhya) - *Top 20 AI Talent Hub Indonesia*
+* **Mitra:** SMAN Ngoro, PIK-R, BKKBN Jombang.
+
+---
+*Dibuat dengan 💙 untuk masa depan remaja Indonesia.*
