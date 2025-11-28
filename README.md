@@ -83,7 +83,7 @@ Modul "Pojok Materi" yang menyajikan info seputar Triad KRR (Kesehatan Reproduks
 
 ## 💼 Ekosistem Startup Developer
 
-Projek ini dikembangkan oleh **Yahya (@syarfddn_yhya)**, Top 20 AI Talent Hub Indonesia, sebagai bagian dari ekosistem inovasi digital yang lebih luas:
+Projek ini dikembangkan oleh **Muhammad Syarifuddin Yahya (ig/tt @syarfddn_yhya)**, Top 20 AI Talent Hub Indonesia, sebagai bagian dari ekosistem inovasi digital yang lebih luas:
 
 | **Nama Startup** | **Deskripsi Singkat** | **Instagram** |
 | :--- | :--- | :--- |
@@ -148,23 +148,30 @@ Akses aplikasi di `http://localhost:3000`.
 ## 🗺️ Roadmap Pengembangan
 
 - [x] **Fase 1 (MVP):** Rilis Landing Page, Chat AI Dasar, Integrasi WA.
-- [ ] **Fase 2 (Q1 2026):** Dashboard Admin Khusus Guru BK dengan Analitik Data Lanjutan.
-- [ ] **Fase 3 (Q3 2026):** Fitur Tele-konseling Video Call di dalam aplikasi.
-- [ ] **Fase 4 (Q4 2026):** Ekspansi ke 10 SMA di Kabupaten Jombang.
+- [ ] **Fase 2:** Dashboard Admin Khusus Guru BK dengan Analitik Data Lanjutan.
+- [ ] **Fase 3:** Ubah Web App ke Mobile App dan tambahkan fitur Tele-konseling Video Call di dalam aplikasi.
+- [ ] **Fase 4:** Ekspansi ke 10 SMA di Kabupaten Jombang.
 
 ---
 
 ## 🤝 Tim & Mitra
 
-**Lead Developer & Founder:**
+### Lead Developer & Founder
+**Muhammad Syarifuddin Yahya**
 <br>
-**Yahya**
-<br>
-*Top 20 AI Talent Hub Indonesia (Universitas Indonesia)*
+*Innovator in Technology & Business Startup*
+*Top 100, Top 20, & Finalist AI Talent Hub Indonesia (Universitas Indonesia x Pertamina x Danatara x ByteDance x BytePlus x Indosat x Mandiri)*
 <br>
 Connect: [Instagram @syarfddn_yhya](https://www.instagram.com/syarfddn_yhya)
 
-**Mitra Resmi:**
+### Core Team
+| Peran | Nama & Prestasi | Kontak |
+| :--- | :--- | :--- |
+| **Top 5 Duta GenRe 2025** | **Rozzaq Wahid** <br> *(Ketua OSIS SMANERO 2025)* | [![IG](https://img.shields.io/badge/IG-@rozzaqwahid-E4405F)](https://www.instagram.com/rozzaqwahid) |
+| **Finalis Duta GenRe 2025** | **Salvia Nathaniela Oriana** <br> *(Duta Anak Bidang Desa Jombang 2024)* | [![IG](https://img.shields.io/badge/IG-@salvianthniela-E4405F)](https://www.instagram.com/salvianthniela) |
+| **Product Manager** | **M. Saiful Amruhu** <br> *(Duta Anak Partisipasi Jombang 2025, Juara 2 Duta Anti Narkoba Kec. Ngoro)* | [![IG](https://img.shields.io/badge/IG-@pulamruh-E4405F)](https://www.instagram.com/pulamruh) |
+
+### Mitra Resmi
 * **SMAN Negeri Ngoro Jombang** ([Website](https://smanegeringoro.sch.id/))
 * **PIK-R PILAR** (Pusat Informasi & Konseling Remaja)
 * **BKKBN Kabupaten Jombang**
