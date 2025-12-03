@@ -1,13 +1,14 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, ChevronDown } from 'lucide-react';
+import { Heart, ChevronDown, Menu, X } from 'lucide-react';
 import MindoraLogo from './MindoraLogo';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Hide Navbar on Dashboard and Chat pages (they use Sidebar/BottomNav)
   if (pathname.startsWith('/dashboard') || pathname.startsWith('/chat')) {
@@ -65,17 +66,61 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile menu button placeholder */}
+          {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
-            <button className="text-text-main">
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-emerald-900 p-2 rounded-lg hover:bg-emerald-50 transition-colors"
+            >
               <span className="sr-only">Open menu</span>
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-slate-100 shadow-lg p-4 flex flex-col space-y-4 animate-slide-down">
+            <Link 
+              href="/" 
+              className="block px-4 py-3 rounded-xl text-slate-600 hover:bg-emerald-50 hover:text-emerald-900 font-medium"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Beranda
+            </Link>
+            <Link 
+              href="/login" 
+              className="block px-4 py-3 rounded-xl text-slate-600 hover:bg-emerald-50 hover:text-emerald-900 font-medium"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Mind Companion
+            </Link>
+            <Link 
+              href="/login" 
+              className="block px-4 py-3 rounded-xl text-slate-600 hover:bg-emerald-50 hover:text-emerald-900 font-medium"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Expert Connect
+            </Link>
+            <Link 
+              href="/materi" 
+              className="block px-4 py-3 rounded-xl text-slate-600 hover:bg-emerald-50 hover:text-emerald-900 font-medium"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Library
+            </Link>
+            <div className="pt-2 border-t border-slate-100">
+              <Link 
+                href="/login"
+                className="block w-full text-center bg-emerald-900 text-white px-6 py-3 rounded-xl font-medium shadow-sm hover:bg-emerald-800 transition-all"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Masuk
+              </Link>
+            </div>
+        </div>
+      )}
     </nav>
   );
 }

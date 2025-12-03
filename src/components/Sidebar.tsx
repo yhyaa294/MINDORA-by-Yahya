@@ -3,14 +3,14 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutGrid, MessageCircle, BookOpen, Building, LogOut, User, Shield, ShoppingBag } from 'lucide-react';
-import MysteryLogo from './MysteryLogo';
+import { LayoutGrid, MessageCircle, BookOpen, Building, LogOut, User, Shield, ShoppingBag, Sprout } from 'lucide-react';
+import MindoraLogo from './MindoraLogo';
 
 export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const [userRole, setUserRole] = useState<string | null>(null);
-  const [userName, setUserName] = useState('Sobat Sehati');
+  const [userName, setUserName] = useState('Teman Mindora');
 
   useEffect(() => {
     try {
@@ -32,12 +32,12 @@ export default function Sidebar() {
     { name: 'Dashboard', href: '/dashboard', icon: LayoutGrid },
     { name: 'Konsultasi', href: '/chat', icon: MessageCircle },
     { name: 'Wellness Store', href: '/dashboard/store', icon: ShoppingBag },
-    { name: 'Materi GenRe', href: '/materi', icon: BookOpen },
+    { name: 'Growth Library', href: '/materi', icon: Sprout },
   ];
 
   const adminItems = [
     { name: 'Dashboard Konselor', href: '/dashboard/counselor', icon: LayoutGrid },
-    { name: 'Kelola Materi', href: '/materi', icon: BookOpen }, // Assuming shared for now
+    { name: 'Growth Library', href: '/materi', icon: Sprout }, 
     { name: 'Lihat Sebagai Siswa', href: '/dashboard', icon: User },
   ];
 
@@ -50,15 +50,15 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="hidden md:flex flex-col w-64 h-screen bg-white/90 backdrop-blur-xl border-r border-slate-100 fixed left-0 top-0 z-40">
+    <aside className="hidden md:flex flex-col w-64 h-screen bg-[#FFFBEB] border-r border-emerald-900/10 fixed left-0 top-0 z-40">
       {/* Header / Logo */}
-      <div className="p-6 border-b border-slate-100 flex items-center justify-center">
-        <MysteryLogo className="w-32 h-10" text="MINDORA" subtext={userRole === 'admin' ? "COUNSELOR" : "BETA"} />
+      <div className="p-6 border-b border-emerald-900/10 flex items-center justify-start">
+        <MindoraLogo className="h-8" color="dark" />
       </div>
 
       {/* Navigation Links */}
       <div className="flex-1 py-6 px-4 space-y-2 overflow-y-auto">
-        <p className="px-4 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Menu Utama</p>
+        <p className="px-4 text-xs font-bold text-emerald-900/40 uppercase tracking-wider mb-2">Menu Utama</p>
         {menuItems.map((item) => {
           const isActive = pathname === item.href;
           const Icon = item.icon;
@@ -69,11 +69,11 @@ export default function Sidebar() {
               href={item.href}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group ${
                 isActive 
-                  ? 'bg-blue-50 text-blue-600 shadow-sm' 
-                  : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                  ? 'bg-emerald-100 text-emerald-800 shadow-sm' 
+                  : 'text-slate-500 hover:bg-white hover:text-emerald-700 hover:shadow-sm'
               }`}
             >
-              <Icon className={`w-5 h-5 ${isActive ? 'text-blue-600' : 'text-slate-400 group-hover:text-slate-600'}`} />
+              <Icon className={`w-5 h-5 ${isActive ? 'text-emerald-700' : 'text-slate-400 group-hover:text-emerald-600'}`} />
               {item.name}
             </Link>
           );
@@ -81,14 +81,14 @@ export default function Sidebar() {
       </div>
 
       {/* User Profile & Logout */}
-      <div className="p-4 border-t border-slate-100 bg-slate-50/50">
+      <div className="p-4 border-t border-emerald-900/10 bg-white/50">
         <div className="flex items-center gap-3 mb-4 px-2">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md ${userRole === 'admin' ? 'bg-gradient-to-br from-purple-500 to-pink-500' : 'bg-gradient-to-br from-blue-500 to-indigo-500'}`}>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md ${userRole === 'admin' ? 'bg-gradient-to-br from-emerald-700 to-emerald-900' : 'bg-gradient-to-br from-emerald-500 to-teal-600'}`}>
                 {userRole === 'admin' ? <Shield className="w-5 h-5" /> : <User className="w-5 h-5" />}
             </div>
             <div className="overflow-hidden">
-                <p className="text-sm font-bold text-slate-800 truncate">{userName}</p>
-                <p className="text-xs text-slate-500 truncate">{userRole === 'admin' ? 'Administrator' : 'Pengguna'}</p>
+                <p className="text-sm font-bold text-emerald-950 truncate">{userName}</p>
+                <p className="text-xs text-emerald-700/60 truncate">{userRole === 'admin' ? 'Administrator' : 'Teman Mindora'}</p>
             </div>
         </div>
         
