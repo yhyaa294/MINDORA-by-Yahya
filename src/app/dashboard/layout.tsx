@@ -7,16 +7,16 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen bg-slate-50">
+    <div className="flex min-h-screen bg-slate-50 relative">
       {/* Desktop Sidebar */}
       <Sidebar />
 
-      {/* Main Content Area */}
-      <main className="flex-1 md:ml-64 pb-20 md:pb-0">
+      {/* Main Content Area - Added massive padding bottom to prevent overlap */}
+      <main className="flex-1 md:ml-64 pb-32 md:pb-0">
         {children}
       </main>
 
-      {/* Mobile Bottom Navigation */}
+      {/* Mobile Bottom Navigation - Rendered at root level for z-index stacking context */}
       <BottomNav />
     </div>
   );

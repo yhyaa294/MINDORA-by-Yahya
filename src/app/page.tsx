@@ -33,11 +33,11 @@ export default function Home() {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-6 w-full sm:w-auto">
-                    <Link href="/login" className="flex justify-center items-center w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-emerald-900 text-white font-medium hover:bg-emerald-800 transition-all shadow-lg shadow-emerald-900/10 text-sm sm:text-base">
+                    <Link href="/chat/ai" className="flex justify-center items-center w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-emerald-900 text-white font-medium hover:bg-emerald-800 transition-all shadow-lg shadow-emerald-900/10 text-sm sm:text-base active:scale-95">
                         Mulai Konsultasi
                         <ArrowRight className="ml-2 w-4 h-4" />
                     </Link>
-                    <Link href="/about" className="flex justify-center items-center w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full border border-emerald-900/20 text-emerald-900 font-medium hover:bg-emerald-50 transition-all text-sm sm:text-base">
+                    <Link href="/about" className="flex justify-center items-center w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full border border-emerald-900/20 text-emerald-900 font-medium hover:bg-emerald-50 transition-all text-sm sm:text-base active:scale-95">
                         Tentang Kami
                     </Link>
                 </div>
@@ -95,11 +95,11 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                    <Link href="/login" className="w-full sm:w-auto px-6 py-3 bg-emerald-900 text-white rounded-xl font-medium text-sm hover:bg-emerald-800 transition-all shadow-lg flex items-center justify-center gap-2">
+                    <Link href="/chat/ai" className="w-full sm:w-auto px-6 py-3 bg-emerald-900 text-white rounded-xl font-medium text-sm hover:bg-emerald-800 transition-all shadow-lg flex items-center justify-center gap-2 active:scale-95">
                         <Zap className="w-4 h-4 text-yellow-400" />
                         AI Care Assistant
                     </Link>
-                    <Link href="/login" className="w-full sm:w-auto px-6 py-3 bg-white text-emerald-900 border border-emerald-900/20 rounded-xl font-medium text-sm hover:bg-emerald-50 transition-all flex items-center justify-center gap-2">
+                    <Link href="/login" className="w-full sm:w-auto px-6 py-3 bg-white text-emerald-900 border border-emerald-900/20 rounded-xl font-medium text-sm hover:bg-emerald-50 transition-all flex items-center justify-center gap-2 active:scale-95">
                         <MessageCircle className="w-4 h-4 text-emerald-600" />
                         Chat Konselor
                     </Link>
@@ -186,7 +186,7 @@ export default function Home() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Feature 1 */}
-                <div className="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 hover:border-emerald-500 transition-colors group">
+                <div className="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 hover:border-emerald-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-700 mb-4 sm:mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all">
                         <Zap className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
@@ -197,7 +197,7 @@ export default function Home() {
                 </div>
 
                 {/* Feature 2 */}
-                <div className="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 hover:border-orange-400 transition-colors group">
+                <div className="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 hover:border-orange-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-600 mb-4 sm:mb-6 group-hover:bg-orange-500 group-hover:text-white transition-all">
                         <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
@@ -208,7 +208,7 @@ export default function Home() {
                 </div>
 
                 {/* Feature 3 */}
-                <div className="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 hover:border-blue-400 transition-colors group">
+                <div className="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-4 sm:mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all">
                         <BookOpen className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
@@ -288,7 +288,7 @@ export default function Home() {
                         href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20pasang%20MINDORA%20di%20sekolah%20saya.%20Boleh%20minta%20info%20lebih%20lanjut?" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="inline-flex justify-center items-center w-full md:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-emerald-900 text-white font-medium hover:bg-emerald-800 transition-all shadow-lg shadow-emerald-900/10 text-sm sm:text-base"
+                        className="inline-flex justify-center items-center w-full md:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-emerald-900 text-white font-medium hover:bg-emerald-800 transition-all shadow-lg shadow-emerald-900/10 text-sm sm:text-base active:scale-95"
                     >
                         Ajukan Demo & Penawaran
                         <ArrowRight className="ml-2 w-4 h-4" />
@@ -312,7 +312,7 @@ export default function Home() {
                 <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif text-white mb-6 sm:mb-8 leading-tight">
                     Mulai Perjalanan <br/> Menuju Ketenangan.
                 </h2>
-                <Link href="/login" className="inline-flex items-center bg-[#FFFBEB] text-emerald-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-white hover:scale-105 transition-all duration-300 shadow-xl text-sm sm:text-base">
+                <Link href="/login" className="inline-flex items-center bg-[#FFFBEB] text-emerald-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-white hover:scale-105 transition-all duration-300 shadow-xl text-sm sm:text-base active:scale-95">
                     Bergabung Sekarang
                     <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>

@@ -91,11 +91,11 @@ export default function AIChatPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen bg-[#FFFBEB] font-sans">
       
       {/* 1. CHAT HEADER (Fixed Top) */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 h-16 flex items-center px-4 shadow-sm">
-        <Link href="/chat" className="p-2 mr-2 rounded-full hover:bg-slate-100 text-slate-600 transition-colors">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-emerald-100 h-16 flex items-center px-4 shadow-sm">
+        <Link href="/dashboard" className="p-2 mr-2 rounded-full hover:bg-emerald-50 text-emerald-700 transition-colors">
             <ArrowLeft className="w-6 h-6" />
         </Link>
         
@@ -104,25 +104,25 @@ export default function AIChatPage() {
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-md">
                     <Zap className="w-6 h-6" />
                 </div>
-                <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+                <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full"></span>
             </div>
             <div>
-                <h1 className="font-bold text-slate-900 text-sm md:text-base">MINDORA</h1>
+                <h1 className="font-bold text-emerald-950 text-sm md:text-base">MINDORA</h1>
                 <p className="text-xs text-emerald-600 font-medium flex items-center gap-1">
                     <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
-                    Virtual Companion
+                    AI Online
                 </p>
             </div>
         </div>
       </header>
 
       {/* 2. CHAT AREA (Scrollable Middle) */}
-      <main className="flex-1 overflow-y-auto pt-20 pb-24 px-4 scrollbar-hide bg-[url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png')]">
+      <main className="flex-1 overflow-y-auto pt-20 pb-32 px-4 scrollbar-hide">
         <div className="max-w-3xl mx-auto space-y-6">
           
           {/* Welcome Timestamp */}
           <div className="text-center">
-              <span className="bg-slate-200/50 text-slate-500 text-[10px] px-3 py-1 rounded-full">
+              <span className="bg-emerald-100/50 text-emerald-600 text-[10px] px-3 py-1 rounded-full font-medium">
                   Hari ini, {new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}
               </span>
           </div>
@@ -135,10 +135,10 @@ export default function AIChatPage() {
               <div
                 className={`max-w-[85%] md:max-w-[70%] p-4 shadow-sm text-sm md:text-base relative group ${
                   msg.role === 'user'
-                    ? 'bg-gradient-to-br from-emerald-600 to-teal-600 text-white rounded-2xl rounded-tr-none'
+                    ? 'bg-gradient-to-br from-emerald-600 to-emerald-500 text-white rounded-2xl rounded-tr-none shadow-emerald-200'
                     : msg.isCrisis 
                         ? 'bg-rose-50 text-rose-800 border border-rose-200 rounded-2xl rounded-tl-none'
-                        : 'bg-white text-slate-800 border border-slate-100 rounded-2xl rounded-tl-none'
+                        : 'bg-white text-emerald-950 border border-emerald-100 rounded-2xl rounded-tl-none'
                 }`}
               >
                 {msg.role === 'ai' && msg.isCrisis && (
@@ -151,7 +151,7 @@ export default function AIChatPage() {
                 <div className="whitespace-pre-wrap leading-relaxed">{msg.content}</div>
                 
                 {/* Time Indicator */}
-                <div className={`text-[10px] mt-1 text-right opacity-60 ${msg.role === 'user' ? 'text-emerald-100' : 'text-slate-400'}`}>
+                <div className={`text-[10px] mt-1 text-right opacity-60 ${msg.role === 'user' ? 'text-emerald-50' : 'text-slate-400'}`}>
                     {new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}
                 </div>
               </div>
@@ -160,9 +160,9 @@ export default function AIChatPage() {
 
           {isLoading && (
             <div className="flex justify-start animate-pulse">
-              <div className="bg-white text-slate-500 rounded-2xl rounded-tl-none p-4 flex items-center gap-3 shadow-sm border border-slate-100">
-                <Loader2 className="w-4 h-4 animate-spin text-emerald-500" />
-                <span className="text-xs font-medium">Mindora sedang berpikir...</span>
+              <div className="bg-white text-emerald-600 rounded-2xl rounded-tl-none p-4 flex items-center gap-3 shadow-sm border border-emerald-100">
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span className="text-xs font-medium">Mindora sedang mengetik...</span>
               </div>
             </div>
           )}
@@ -171,12 +171,12 @@ export default function AIChatPage() {
       </main>
 
       {/* 3. INPUT AREA (Fixed Bottom) */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white/80 backdrop-blur-lg border-t border-slate-100">
-        <div className="max-w-3xl mx-auto relative">
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-t border-emerald-100 pb-safe">
+        <div className="max-w-3xl mx-auto relative p-4 pb-8 md:pb-4">
             
             {/* Panic Button Overlay */}
             {showPanic && (
-                <div className="absolute bottom-full left-0 right-0 mb-4 animate-bounce-in px-2">
+                <div className="absolute bottom-full left-0 right-0 mb-4 animate-bounce-in px-4">
                     <a 
                         href="https://wa.me/6281234567890?text=Halo%20Kak%20GenRe,%20aku%20butuh%20bantuan%20darurat.%20Aku%20merasa%20tidak%20aman."
                         target="_blank"
@@ -189,8 +189,8 @@ export default function AIChatPage() {
                 </div>
             )}
 
-            <form onSubmit={handleSend} className="flex items-end gap-2">
-                <div className="flex-1 bg-slate-100 rounded-3xl px-4 py-3 focus-within:ring-2 focus-within:ring-emerald-500/50 transition-all border border-transparent focus-within:border-emerald-200 focus-within:bg-white">
+            <form onSubmit={handleSend} className="flex items-end gap-3">
+                <div className="flex-1 bg-slate-50 rounded-[2rem] px-5 py-3 focus-within:ring-2 focus-within:ring-emerald-500/50 transition-all border border-slate-200 focus-within:border-emerald-500 focus-within:bg-white shadow-inner">
                     <textarea
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
@@ -209,14 +209,11 @@ export default function AIChatPage() {
                 <button
                     type="submit"
                     disabled={isLoading || !input.trim()}
-                    className="bg-gradient-to-br from-emerald-600 to-teal-600 text-white p-3 rounded-full shadow-lg shadow-emerald-500/30 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+                    className="bg-gradient-to-br from-emerald-600 to-teal-600 text-white p-3.5 rounded-full shadow-lg shadow-emerald-500/30 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
                 >
                     <Send className="w-5 h-5 ml-0.5" />
                 </button>
             </form>
-            <p className="text-center text-[10px] text-slate-400 mt-2">
-                Mindora dapat membuat kesalahan. Dalam kondisi darurat, hubungi 119.
-            </p>
         </div>
       </div>
     </div>
