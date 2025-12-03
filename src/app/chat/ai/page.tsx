@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, FormEvent } from 'react';
 import Link from 'next/link';
-import { Send, Bot, Loader2, AlertTriangle, Phone, ArrowLeft } from 'lucide-react';
+import { Send, Bot, Loader2, AlertTriangle, Phone, ArrowLeft, Zap } from 'lucide-react';
 
 type Message = {
   id: string;
@@ -32,7 +32,7 @@ export default function AIChatPage() {
     scrollToBottom();
   }, [messages]);
 
-  const handleSend = async (e: React.FormEvent) => {
+  const handleSend = async (e: FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
 

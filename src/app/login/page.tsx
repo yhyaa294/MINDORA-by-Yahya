@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { User, Shield, Smile, Lock, ArrowRight, Loader2, Sparkles } from 'lucide-react';
+import { User, Shield, ArrowRight, Loader2, Sparkles, Lock } from 'lucide-react';
 import MindoraLogo from '../../components/MindoraLogo';
 
 export default function LoginPage() {
@@ -31,15 +31,16 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFBEB] flex items-center justify-center p-4 font-sans">
-      <div className="w-full max-w-md space-y-8 relative">
-        
-        {/* Abstract Background Decor */}
-        <div className="absolute -top-20 -left-20 w-64 h-64 bg-emerald-200/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-orange-200/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+    <div className="min-h-screen bg-[#FFFBEB] flex items-center justify-center p-4 font-sans relative overflow-hidden">
+      
+      {/* Abstract Background Decor (Z-Index Fixed) */}
+      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-emerald-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob z-0"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-orange-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000 z-0"></div>
 
+      <div className="w-full max-w-md space-y-8 relative z-10">
+        
         {/* Header */}
-        <div className="text-center space-y-4 relative z-10">
+        <div className="text-center space-y-4">
           <div className="flex justify-center mb-8">
              <MindoraLogo className="h-12" color="dark" />
           </div>
@@ -47,20 +48,21 @@ export default function LoginPage() {
           <p className="text-slate-600 text-sm">Silakan pilih akses demo di bawah ini</p>
         </div>
 
-        {/* Demo Cards */}
-        <div className="space-y-4 relative z-10">
+        {/* Demo Cards Container */}
+        <div className="space-y-4">
           
-          {/* Student Login Card */}
+          {/* Student Login Button */}
           <button
+            type="button"
             onClick={() => handleLogin('student')}
             disabled={!!isLoading}
-            className="w-full group relative overflow-hidden bg-white rounded-3xl p-6 text-left shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 border border-emerald-900/5 hover:border-emerald-500 transition-all duration-300"
+            className="w-full group relative overflow-hidden bg-white/80 backdrop-blur-sm rounded-3xl p-6 text-left shadow-sm hover:shadow-xl hover:shadow-emerald-900/10 border border-emerald-900/10 hover:border-emerald-500 transition-all duration-300 z-20 cursor-pointer"
           >
-            <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+            <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
               <Sparkles className="w-24 h-24 -mr-6 -mt-6 text-emerald-900" />
             </div>
             
-            <div className="relative z-10 flex items-center gap-5">
+            <div className="relative z-10 flex items-center gap-5 pointer-events-none">
               <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                 {isLoading === 'student' ? (
                   <Loader2 className="w-6 h-6 animate-spin" />
@@ -80,17 +82,18 @@ export default function LoginPage() {
             </div>
           </button>
 
-          {/* Counselor Login Card */}
+          {/* Counselor Login Button */}
           <button
+            type="button"
             onClick={() => handleLogin('admin')}
             disabled={!!isLoading}
-            className="w-full group relative overflow-hidden bg-white rounded-3xl p-6 text-left shadow-sm hover:shadow-xl hover:shadow-orange-900/5 border border-emerald-900/5 hover:border-orange-400 transition-all duration-300"
+            className="w-full group relative overflow-hidden bg-white/80 backdrop-blur-sm rounded-3xl p-6 text-left shadow-sm hover:shadow-xl hover:shadow-orange-900/10 border border-emerald-900/10 hover:border-orange-400 transition-all duration-300 z-20 cursor-pointer"
           >
-            <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+            <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
               <Shield className="w-24 h-24 -mr-6 -mt-6 text-orange-900" />
             </div>
             
-            <div className="relative z-10 flex items-center gap-5">
+            <div className="relative z-10 flex items-center gap-5 pointer-events-none">
               <div className="w-14 h-14 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                 {isLoading === 'admin' ? (
                   <Loader2 className="w-6 h-6 animate-spin" />
@@ -118,30 +121,30 @@ export default function LoginPage() {
             <div className="w-full border-t border-emerald-900/10"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="px-4 bg-[#FFFBEB] text-[10px] text-emerald-900/40 uppercase tracking-widest font-medium">Atau login manual</span>
+            <span className="px-4 bg-[#FFFBEB] text-[10px] text-emerald-900/40 uppercase tracking-widest font-medium z-10">Atau login manual</span>
           </div>
         </div>
 
-        {/* Manual Login Form (Visual Only for now) */}
-        <form className="space-y-4 opacity-40 pointer-events-none select-none grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+        {/* Manual Login Form (Visual Only) */}
+        <div className="space-y-4 opacity-60 pointer-events-none grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
           <div>
             <label className="block text-xs font-bold text-emerald-900/70 uppercase tracking-wider mb-2">Email</label>
             <div className="relative">
-              <input type="email" className="w-full pl-10 pr-4 py-3 rounded-xl border border-emerald-900/10 bg-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="user@mindora.app" />
+              <input disabled type="email" className="w-full pl-10 pr-4 py-3 rounded-xl border border-emerald-900/10 bg-white" placeholder="user@mindora.app" />
               <User className="w-5 h-5 text-emerald-900/30 absolute left-3 top-3.5" />
             </div>
           </div>
           <div>
             <label className="block text-xs font-bold text-emerald-900/70 uppercase tracking-wider mb-2">Password</label>
             <div className="relative">
-              <input type="password" className="w-full pl-10 pr-4 py-3 rounded-xl border border-emerald-900/10 bg-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="••••••••" />
+              <input disabled type="password" className="w-full pl-10 pr-4 py-3 rounded-xl border border-emerald-900/10 bg-white" placeholder="••••••••" />
               <Lock className="w-5 h-5 text-emerald-900/30 absolute left-3 top-3.5" />
             </div>
           </div>
-          <button type="button" className="w-full bg-emerald-900 text-white py-3 rounded-xl font-bold text-sm hover:bg-emerald-800 transition-colors shadow-lg shadow-emerald-900/10">
+          <button disabled type="button" className="w-full bg-emerald-900 text-white py-3 rounded-xl font-bold text-sm shadow-lg shadow-emerald-900/10">
             Masuk (Manual)
           </button>
-        </form>
+        </div>
         
         <p className="text-center text-xs text-emerald-900/40 mt-8">
           © 2025 MINDORA Inc. All rights reserved.
