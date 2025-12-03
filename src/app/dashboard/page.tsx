@@ -182,8 +182,8 @@ export default function DashboardPage() {
                             <Phone className="w-5 h-5" />
                         </div>
                         <div>
-                            <h3 className="font-bold text-lg text-slate-800 mb-1">Panic Button</h3>
-                            <p className="text-slate-400 text-xs">Hubungi Duta GenRe</p>
+                            <h3 className="font-bold text-lg text-slate-800 mb-1">SOS Crisis Line</h3>
+                            <p className="text-slate-400 text-xs">Chat Konselor Manusia</p>
                         </div>
                     </a>
 
@@ -192,8 +192,8 @@ export default function DashboardPage() {
                             <BookOpen className="w-5 h-5" />
                         </div>
                         <div>
-                            <h3 className="font-bold text-lg text-slate-800 mb-1">Pojok Materi</h3>
-                            <p className="text-slate-400 text-xs">Edukasi Triad KRR</p>
+                            <h3 className="font-bold text-lg text-slate-800 mb-1">Self-Growth Library</h3>
+                            <p className="text-slate-400 text-xs">Edukasi Mental</p>
                         </div>
                     </Link>
                 </div>
@@ -211,7 +211,10 @@ export default function DashboardPage() {
                     </div>
                     <div className="space-y-3">
                         {recentMoods.length === 0 ? (
-                            <p className="text-xs text-slate-400 italic text-center py-4">Belum ada data mood.</p>
+                            <div className="text-center py-8 bg-slate-50 rounded-xl border border-slate-100 border-dashed">
+                                <p className="text-sm font-medium text-slate-600">Halo! Kamu belum mengisi mood tracker hari ini.</p>
+                                <p className="text-xs text-slate-400 mt-1">Yuk check-in sekarang!</p>
+                            </div>
                         ) : (
                             recentMoods.map((log) => (
                                 <div key={log.id} className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
@@ -229,40 +232,11 @@ export default function DashboardPage() {
                     </div>
                 </div>
 
-                {/* HEALING CORNER (Affiliate) */}
-                <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-3xl p-6 border border-rose-100">
-                    <div className="flex items-center gap-2 mb-4 text-rose-800 font-bold">
-                        <ShoppingBag className="w-5 h-5" />
-                        Healing Corner
-                    </div>
-                    
-                    <div className="space-y-3">
-                        {/* Item 1 */}
-                        <div className="bg-white p-3 rounded-2xl flex gap-3 items-center shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
-                            <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">📓</div>
-                            <div className="flex-1">
-                                <h4 className="text-xs font-bold text-slate-800 line-clamp-1">Gratitude Journal</h4>
-                                <p className="text-[10px] text-slate-500">Rp 45.000</p>
-                            </div>
-                            <button className="p-2 bg-rose-100 text-rose-600 rounded-lg hover:bg-rose-500 hover:text-white transition-colors">
-                                <ExternalLink className="w-3 h-3" />
-                            </button>
-                        </div>
-
-                        {/* Item 2 */}
-                        <div className="bg-white p-3 rounded-2xl flex gap-3 items-center shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
-                            <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">🎾</div>
-                            <div className="flex-1">
-                                <h4 className="text-xs font-bold text-slate-800 line-clamp-1">Anti-Stress Ball</h4>
-                                <p className="text-[10px] text-slate-500">Rp 15.000</p>
-                            </div>
-                            <button className="p-2 bg-rose-100 text-rose-600 rounded-lg hover:bg-rose-500 hover:text-white transition-colors">
-                                <ExternalLink className="w-3 h-3" />
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <p className="text-[10px] text-rose-400 mt-4 text-center opacity-80">*Sebagian hasil untuk operasional server</p>
+                {/* COMING SOON SECTION */}
+                <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-3xl p-6 border border-slate-200 border-dashed text-center">
+                    <ShoppingBag className="w-8 h-8 text-slate-300 mx-auto mb-3" />
+                    <h4 className="font-bold text-slate-700">Healing Corner</h4>
+                    <p className="text-xs text-slate-500 mt-1">Fitur marketplace alat relaksasi sedang dalam pengembangan.</p>
                 </div>
 
             </div>

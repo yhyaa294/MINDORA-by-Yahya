@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/AppShell";
 
@@ -8,15 +8,22 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  title: "SEHATI+ | Sistem Ekosistem Hati & Intelegensi",
-  description: "Platform kesehatan mental dan konsultasi untuk pelajar SMA, didukung oleh PIK-R, GenRe, dan BKKBN.",
-  viewport: {
-    width: "device-width",
-    initialScale: 0.75,
-    maximumScale: 1,
-    userScalable: false,
-  },
+  title: "MINDORA | Ketenangan Pikiran dalam Genggaman",
+  description: "Platform kesehatan mental modern untuk generasi masa depan. Tanpa stigma, privasi terjaga.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#064E3B",
 };
 
 export default function RootLayout({
@@ -27,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning>
       <body
-        className={`${jakarta.variable} antialiased bg-slate-50`}
+        className={`${jakarta.variable} ${playfair.variable} antialiased bg-[#FFFBEB] font-sans text-slate-900`}
       >
         <AppShell>
           {children}

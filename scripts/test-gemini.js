@@ -23,7 +23,7 @@ try {
 
     // 2. Initialize Gemini
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
 
     // 3. Test Connection
     console.log("🔄 Testing connection to Google Gemini...");

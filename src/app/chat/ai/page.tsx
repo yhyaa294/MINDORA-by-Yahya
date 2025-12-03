@@ -16,7 +16,7 @@ export default function AIChatPage() {
     {
       id: '1',
       role: 'ai',
-      content: 'Halo! Aku Sobat SEHATI. Aku siap mendengarkan ceritamu tanpa menghakimi. Apa yang sedang kamu rasakan?'
+      content: 'Hai, aku Mindora. Ruang ini aman buat cerita apa aja. Apa yang lagi ngeganjel di pikiranmu?'
     }
   ]);
   const [input, setInput] = useState('');
@@ -101,16 +101,16 @@ export default function AIChatPage() {
         
         <div className="flex items-center gap-3">
             <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-md">
-                    <Bot className="w-6 h-6" />
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-md">
+                    <Zap className="w-6 h-6" />
                 </div>
                 <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
             </div>
             <div>
-                <h1 className="font-bold text-slate-900 text-sm md:text-base">Sobat SEHATI</h1>
-                <p className="text-xs text-green-600 font-medium flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                    Online • AI Counselor
+                <h1 className="font-bold text-slate-900 text-sm md:text-base">MINDORA</h1>
+                <p className="text-xs text-emerald-600 font-medium flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                    Virtual Companion
                 </p>
             </div>
         </div>
@@ -135,7 +135,7 @@ export default function AIChatPage() {
               <div
                 className={`max-w-[85%] md:max-w-[70%] p-4 shadow-sm text-sm md:text-base relative group ${
                   msg.role === 'user'
-                    ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl rounded-tr-none'
+                    ? 'bg-gradient-to-br from-emerald-600 to-teal-600 text-white rounded-2xl rounded-tr-none'
                     : msg.isCrisis 
                         ? 'bg-rose-50 text-rose-800 border border-rose-200 rounded-2xl rounded-tl-none'
                         : 'bg-white text-slate-800 border border-slate-100 rounded-2xl rounded-tl-none'
@@ -151,7 +151,7 @@ export default function AIChatPage() {
                 <div className="whitespace-pre-wrap leading-relaxed">{msg.content}</div>
                 
                 {/* Time Indicator */}
-                <div className={`text-[10px] mt-1 text-right opacity-60 ${msg.role === 'user' ? 'text-blue-100' : 'text-slate-400'}`}>
+                <div className={`text-[10px] mt-1 text-right opacity-60 ${msg.role === 'user' ? 'text-emerald-100' : 'text-slate-400'}`}>
                     {new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}
                 </div>
               </div>
@@ -161,8 +161,8 @@ export default function AIChatPage() {
           {isLoading && (
             <div className="flex justify-start animate-pulse">
               <div className="bg-white text-slate-500 rounded-2xl rounded-tl-none p-4 flex items-center gap-3 shadow-sm border border-slate-100">
-                <Loader2 className="w-4 h-4 animate-spin text-blue-500" />
-                <span className="text-xs font-medium">Sobat SEHATI sedang mengetik...</span>
+                <Loader2 className="w-4 h-4 animate-spin text-emerald-500" />
+                <span className="text-xs font-medium">Mindora sedang berpikir...</span>
               </div>
             </div>
           )}
@@ -190,7 +190,7 @@ export default function AIChatPage() {
             )}
 
             <form onSubmit={handleSend} className="flex items-end gap-2">
-                <div className="flex-1 bg-slate-100 rounded-3xl px-4 py-3 focus-within:ring-2 focus-within:ring-blue-500/50 transition-all border border-transparent focus-within:border-blue-200 focus-within:bg-white">
+                <div className="flex-1 bg-slate-100 rounded-3xl px-4 py-3 focus-within:ring-2 focus-within:ring-emerald-500/50 transition-all border border-transparent focus-within:border-emerald-200 focus-within:bg-white">
                     <textarea
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
@@ -209,13 +209,13 @@ export default function AIChatPage() {
                 <button
                     type="submit"
                     disabled={isLoading || !input.trim()}
-                    className="bg-gradient-to-br from-blue-600 to-indigo-600 text-white p-3 rounded-full shadow-lg shadow-blue-500/30 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+                    className="bg-gradient-to-br from-emerald-600 to-teal-600 text-white p-3 rounded-full shadow-lg shadow-emerald-500/30 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
                 >
                     <Send className="w-5 h-5 ml-0.5" />
                 </button>
             </form>
             <p className="text-center text-[10px] text-slate-400 mt-2">
-                AI dapat membuat kesalahan. Dalam kondisi darurat, hubungi 119.
+                Mindora dapat membuat kesalahan. Dalam kondisi darurat, hubungi 119.
             </p>
         </div>
       </div>

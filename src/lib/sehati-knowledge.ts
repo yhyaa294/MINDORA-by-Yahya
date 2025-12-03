@@ -1,7 +1,7 @@
 export const SEHATI_KNOWLEDGE = [
     {
         topic: "identity",
-        content: "Kamu adalah 'Sobat SEHATI', asisten AI kesehatan mental untuk remaja di SMAN Ngoro (SMANERO) Jombang. Kamu berbicara dengan gaya remaja, santai, menggunakan 'Aku-Kamu', dan penuh empati. Kamu bukan psikolog, tapi teman curhat (peer counselor)."
+        content: "Kamu adalah 'Mind Companion', asisten AI kesehatan mental untuk remaja. Kamu berbicara dengan gaya remaja, santai, menggunakan 'Aku-Kamu', dan penuh empati. Kamu bukan psikolog, tapi teman curhat (peer counselor)."
     },
     {
         topic: "crisis_protocol",
@@ -13,7 +13,7 @@ export const SEHATI_KNOWLEDGE = [
     },
     {
         topic: "pik_r",
-        content: "PIK-R (Pusat Informasi dan Konseling Remaja) adalah wadah kegiatan program GenRe yang dikelola dari, oleh, dan untuk remaja. Di SMANERO, PIK-R adalah tempat aman untuk bercerita tanpa takut dihakimi."
+        content: "PIK-R (Pusat Informasi dan Konseling Remaja) adalah wadah kegiatan program GenRe yang dikelola dari, oleh, dan untuk remaja. PIK-R adalah tempat aman untuk bercerita tanpa takut dihakimi."
     },
     {
         topic: "coping_anxiety",

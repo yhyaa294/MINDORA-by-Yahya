@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Heart, ChevronDown } from 'lucide-react';
-import MysteryLogo from './MysteryLogo';
+import MindoraLogo from './MindoraLogo';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -20,74 +20,46 @@ export default function Navbar() {
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center gap-3 cursor-pointer">
-            {/* Logo BKKBN, GenRe, & School */}
-            <div className="flex items-center gap-3 border-r border-slate-200 pr-4 mr-2">
-               <img 
-                 src="/logo%20nero.jpg" 
-                 alt="SMK Nero" 
-                 className="h-10 w-auto"
-               />
-               <div className="h-6 w-px bg-slate-200 mx-1"></div>
-               <img 
-                 src="/logo%20bkkbn.webp" 
-                 alt="BKKBN" 
-                 className="h-10 w-auto"
-               />
-               <img 
-                 src="/logo%20genre.webp" 
-                 alt="GenRe" 
-                 className="h-10 w-auto"
-               />
-            </div>
-
-            <div className="flex items-center gap-2">
-              {/* REPLACED: Mystery Logo for SEHATI+ */}
-              <MysteryLogo className="w-24 h-10 sm:w-32 sm:h-11" text="SEHATI+" subtext="PREVIEW" />
-            </div>
+            <Link href="/" className="flex items-center gap-2">
+              <MindoraLogo className="h-9" color="dark" />
+              <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded-full uppercase tracking-wide">Beta</span>
+            </Link>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-text-main hover:text-primary font-medium transition-colors">
+            <Link href="/" className="text-slate-600 hover:text-emerald-800 font-medium transition-colors">
               Beranda
             </Link>
             
             <div className="relative group">
-              <button className="flex items-center gap-1 text-text-main hover:text-primary font-medium transition-colors">
-                Konsultasi
+              <button className="flex items-center gap-1 text-slate-600 hover:text-emerald-800 font-medium transition-colors">
+                Layanan
                 <ChevronDown className="h-4 w-4" />
               </button>
               {/* Dropdown */}
-              <div className="absolute top-full -left-2 w-48 bg-white rounded-xl shadow-lg border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+              <div className="absolute top-full -left-2 w-48 bg-white rounded-xl shadow-xl shadow-emerald-900/5 border border-stone-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
                 <div className="py-2">
-                  <Link href="/chat" className="block px-4 py-2 text-sm text-text-main hover:bg-bg-soft hover:text-primary">
-                    Curhat AI
+                  <Link href="/login" className="block px-4 py-2 text-sm text-slate-600 hover:bg-emerald-50 hover:text-emerald-900">
+                    Mind Companion
                   </Link>
-                  <Link href="#" className="block px-4 py-2 text-sm text-text-main hover:bg-bg-soft hover:text-primary">
-                    Curhat Kakak GenRe
+                  <Link href="/login" className="block px-4 py-2 text-sm text-slate-600 hover:bg-emerald-50 hover:text-emerald-900">
+                    Expert Connect
                   </Link>
                 </div>
               </div>
             </div>
 
-            <Link href="#" className="text-text-main hover:text-primary font-medium transition-colors">
-              Materi GenRe
+            <Link href="/materi" className="text-slate-600 hover:text-emerald-800 font-medium transition-colors">
+              Library
             </Link>
-            <a 
-              href="https://smanegeringoro.sch.id/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-text-main hover:text-primary font-medium transition-colors flex items-center gap-1"
-            >
-              Profil Sekolah
-            </a>
           </div>
 
           {/* Login Button */}
           <div className="hidden md:block">
             <Link 
               href="/login"
-              className="bg-white text-primary border border-primary/20 px-6 py-2.5 rounded-full font-semibold shadow-sm hover:bg-primary hover:text-white transition-all transform hover:-translate-y-0.5"
+              className="bg-emerald-900 text-white px-6 py-2.5 rounded-full font-medium text-sm shadow-sm hover:bg-emerald-800 transition-all"
             >
               Masuk
             </Link>

@@ -3,14 +3,15 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutGrid, MessageCircle, BookOpen, User } from 'lucide-react';
+import { LayoutGrid, MessageCircle, BookOpen, User, ShoppingBag } from 'lucide-react';
 
 export default function BottomNav() {
   const pathname = usePathname();
 
   const navItems = [
     { name: 'Home', href: '/dashboard', icon: LayoutGrid },
-    { name: 'Konsultasi', href: '/chat', icon: MessageCircle },
+    { name: 'Chat', href: '/chat', icon: MessageCircle },
+    { name: 'Store', href: '/dashboard/store', icon: ShoppingBag },
     { name: 'Materi', href: '/materi', icon: BookOpen },
     { name: 'Akun', href: '/profile', icon: User },
   ];

@@ -11,8 +11,8 @@ export default function CounselorDashboard() {
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Halo, Kakak Duta GenRe! 👋</h1>
-          <p className="text-slate-500">Pantau kondisi siswa dan kelola materi edukasi di sini.</p>
+          <h1 className="text-2xl font-bold text-slate-900">Halo, Admin! 👋</h1>
+          <p className="text-slate-500">Pantau kondisi pengguna dan kelola materi edukasi di sini.</p>
         </div>
         <button className="bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-colors">
           + Buat Materi Baru
